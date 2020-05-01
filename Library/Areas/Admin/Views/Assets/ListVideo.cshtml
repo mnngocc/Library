@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" stype="style/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
+<link rel="stylesheet" href="~/css/styles.css" />
+
+
+<div id="assets">
+    <h3>
+        List videos
+    </h3>
+    <br />
+    <a class="btn btn-lg btn-success" role="button" href="/Admin/Assets/AddVideo" >Add new video</a>
+    <br />
+    <br />
+    <div id="assetsTable">
+        <table class="table table-condensed" id=" catalogIndexTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Number of Copies</th>
+                    <th>Year</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var asset in Model.Videos)
+                {
+                <tr class="assetRow">
+                    <td class="">
+
+                        <a href="/Admin/Assets/EditVideo/@asset.Id">
+                            <img src="@asset.ImageURL" class="imageCell" />
+                        </a>
+
+                    </td>
+                    <td class="">
+                        @asset.Title
+                    </td>
+                    <td class="">
+                        @asset.AuthorOrDirector
+                    </td>
+
+                    <td class="">
+                        @asset.NumberOfCopies
+                    </td>
+                    <td class="">
+                        @asset.Year
+                    </td>
+                    <td class="">
+                        @asset.Cost
+                    </td>
+                    <td class="">
+                        <a class="btn btn-lg btn-danger" href="/Admin/Assets/Delete">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

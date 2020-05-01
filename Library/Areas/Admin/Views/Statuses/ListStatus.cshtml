@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" stype="style/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<div id="assets">
+
+    <br />
+    <div id="assetsTable">
+        <table class="table table-condensed" id=" catalogIndexTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Decripton</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var asset in Model.Statuses)
+                {
+                    <tr class="assetRow">
+
+                        <td class="">
+                            @asset.Id
+                        </td>
+                        <td class="">
+                            @asset.Name
+                        </td>
+                        <td class="">
+                            @asset.Description
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

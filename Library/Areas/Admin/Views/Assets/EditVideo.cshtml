@@ -1,0 +1,69 @@
+﻿@using Library.Models.Catalog
+@{
+    ViewData["Title"] = "Edit Book";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model Library.Areas.Admin.Models.Assets.VideoDetailModel
+
+<h2>Edit Video</h2>
+<div class="container">
+    <form method="post" action="/Admin/Assets/UpdateVideo/@Model.AssetId">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-3">
+                    <div>
+                        <img class="detailImage" src="@Model.ImageUrl" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" hidden name="AssetId" value="@Model.AssetId"></>
+                    <label>Title: </label>
+                    <input name="Title" type="text" id="txtTitle" class="form-control" value="@Model.Title" />
+
+                    <label>Author</label>
+                    <input name="AuthorOrDirector" type="text" id="txtAuthor" class="form-control" value="@Model.AuthorOrDirector"></>
+
+                    <label>Status</label>
+                    <input readonly type="text" id="txtStatus" class="form-control" value="@Model.Status"></>
+
+                    <label>Year</label>
+                    <input name="Year" type="number" id="txtYear" class="form-control" value="@Model.Year"
+                           min="0" max="9999"></>
+
+                    <label>Number of copies</label>
+                    <input name="NumberOfCopies" type="number" id="txtNumOfCopies" class="form-control" value="@Model.NumberOfCopies" />
+
+                    <br />
+                </div>
+                <div class="col-md-6 detailInfo">
+                    <table>
+                      
+                        <tr>
+                            <td class="itemLabel">
+
+                                <label> Replacement Cost ($):</label>
+                                <br />
+                            </td>
+                            <td class="itemValue">
+
+                                <input name="Cost" type="number" id="txtCost" step="0.01"
+                                       class="form-control" value="@Model.Cost" />
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <p>
+                        <input class="btn btn-lg btn-info" type="submit" value="Save" />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
