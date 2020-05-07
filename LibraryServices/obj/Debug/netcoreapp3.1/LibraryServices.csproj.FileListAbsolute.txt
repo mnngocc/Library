@@ -10,3 +10,15 @@ E:\HK2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\Li
 E:\HK2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.csproj.CopyComplete
 E:\HK2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.dll
 E:\HK2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.pdb
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\bin\Debug\netcoreapp3.1\LibraryServices.deps.json
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\bin\Debug\netcoreapp3.1\LibraryServices.dll
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\bin\Debug\netcoreapp3.1\LibraryServices.pdb
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\bin\Debug\netcoreapp3.1\LibraryData.dll
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\bin\Debug\netcoreapp3.1\LibraryData.pdb
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.csprojAssemblyReference.cache
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.csproj.CoreCompileInputs.cache
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.AssemblyInfoInputs.cache
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.AssemblyInfo.cs
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.csproj.CopyComplete
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.dll
+E:\HK2-1920\Framework\Project\Git\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.pdb

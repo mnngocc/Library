@@ -78,12 +78,39 @@ namespace LibraryServices
 
         public void MarkFound(int id)
         {
-            throw new NotImplementedException();
+            var now = DateTime.Now;
+            var item = _context.LibraryAssets.FirstOrDefault(a => a.Id == id);
+            _context.Update(item);
+            item.Status = _context.Statuses.FirstOrDefault(stt => stt.Name == "Available");
+
+            //Remove  các checkout 
+            var checkout = _context.Checkouts
+                            .FirstOrDefault(co => co.LibraryAsset.Id == id);
+            if (checkout != null)
+            {
+                _context.Remove(checkout);
+            }
+
+            //Remove lich su checkout
+            var history = _context.CheckoutHistories.FirstOrDefault(h => h.LibraryAsset.Id == id 
+                                                                && h.CheckedIn == null);
+                if (history != null)
+            {
+                _context.Update(history);
+                history.CheckedIn = now;
+            }
+
+            _context.SaveChanges();
+
         }
 
         public void MarkLost(int id)
         {
-            throw new NotImplementedException();
+            var item = _context.LibraryAssets.FirstOrDefault(a => a.Id == id);
+            _context.Update(item);
+            item.Status = _context.Statuses.FirstOrDefault(stt => stt.Name == "Lost");
+            _context.SaveChanges();
+            //throw new NotImplementedException();
         }
 
         public void PlaceHold(int assetId, int libraryCardId)

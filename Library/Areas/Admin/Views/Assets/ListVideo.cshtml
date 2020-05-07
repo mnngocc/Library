@@ -15,7 +15,7 @@
         List videos
     </h3>
     <br />
-    <a class="btn btn-lg btn-success" role="button" href="/Admin/Assets/AddVideo" >Add new video</a>
+    <a class="btn btn-lg btn-success" role="button" href="/Admin/Assets/AddVideo" >Add a new video</a>
     <br />
     <br />
     <div id="assetsTable">
@@ -58,7 +58,7 @@
                         @asset.Cost
                     </td>
                     <td class="">
-                        <a class="btn btn-lg btn-danger" href="/Admin/Assets/Delete">Delete</a>
+                        <a class="btn btn-lg btn-danger" href="/Admin/Assets/Delete/@asset.Id">Delete</a>
                     </td>
                 </tr>
                 }

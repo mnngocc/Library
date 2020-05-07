@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Branches";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" stype="style/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<div id="assets">
+
+    <br />
+    <div id="assetsTable">
+        <table class="table table-condensed" id=" catalogIndexTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Telephone</th>
+                    <th>Description</th>
+                    <th>Open date</th>
+                    <th>ImageURL</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Branches)
+                {
+                <tr class="assetRow">
+
+                    <td class="">
+                        @item.Id
+                    </td>
+                    <td class="">
+                        @item.ImageURL
+                    </td>
+                    <td class="">
+                        @item.Name
+                    </td>
+                    <td class="">
+                        @item.Address
+                    </td>
+                    <td class="">
+                        @item.Telephone
+                    </td>
+                    <td class="">
+                        @item.Description
+                    </td>
+                    <td class="">
+                        @item.OpenDate
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

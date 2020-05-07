@@ -250,8 +250,18 @@ namespace Library.Areas.Admin.Controllers
 
         public IActionResult Delete(int id)
         {
-            _asset.Remove(id);
-            return RedirectToAction("ListBook");
+            
+            string type_ = _asset.GetType(id);
+            if (type_.Equals("Book"))
+            {
+                _asset.Remove(id);
+                return RedirectToAction("ListBook");
+            }    
+            else
+            {
+                _asset.Remove(id);
+                return RedirectToAction("ListVideo");
+            }    
         }
 
         public IActionResult UpdateVideo(VideoDetailModel asset)
