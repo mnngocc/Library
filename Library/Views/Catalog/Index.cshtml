@@ -1,10 +1,13 @@
 ﻿@model Library.Models.Catalog.AssetIndexModel
+@{
+    ViewBag.Title = "Library Catalog";
+}
 
 <div id="assets">
     <h3>
         Library Catalog
     </h3>
-   
+
     <div id="assetsTable">
         <table class="table table-condensed" id=" catalogIndexTable">
             <thead>
@@ -16,25 +19,25 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(var asset in Model.Assets)
+                @foreach (var asset in Model.Assets)
                 {
-                <tr class="assetRow">
-                    <td class="">
-                        <a asp-controller="Catalog" asp-action="Detail"
-                           asp-route-id="@asset.Id">
-                            <img src="@asset.ImageURL" class="imageCell" />
-                        </a>
-                    </td>
-                    <td class="">
-                        @asset.Title
-                    </td>
-                    <td class="">
-                        @asset.AuthorOrDirector
-                    </td>
-                    <td class="">
-                        @asset.DeweyCallNumber
-                    </td>
-                </tr>
+                    <tr class="assetRow">
+                        <td class="">
+                            <a asp-controller="Catalog" asp-action="Detail"
+                               asp-route-id="@asset.Id">
+                                <img src="@asset.ImageURL" class="imageCell" />
+                            </a>
+                        </td>
+                        <td class="">
+                            @asset.Title
+                        </td>
+                        <td class="">
+                            @asset.AuthorOrDirector
+                        </td>
+                        <td class="">
+                            @asset.DeweyCallNumber
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

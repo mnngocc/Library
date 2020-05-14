@@ -8,6 +8,7 @@ namespace LibraryData
     public interface ILibraryAsset
     {
         IEnumerable<LibraryAsset> GetAll();
+        public LibraryAsset Get(int id);
         LibraryAsset GetById(int id);
         public void SetTitle(string title, int id);
         void Add(LibraryAsset newAsset);

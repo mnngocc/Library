@@ -491,3 +491,5 @@ E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Library.pd
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Library.genruntimeconfig.cache
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Branches\AddBranch.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Branches\EditBranch.cshtml.g.cs
+E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\Checkout.cshtml.g.cs
+E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\Hold.cshtml.g.cs

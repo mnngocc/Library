@@ -92,7 +92,10 @@ namespace LibraryServices
 
         public LibraryCard GetLibraryCardByAssetId(int id)
         {
-            throw new NotImplementedException();
+            return _context.LibraryCards
+                .FirstOrDefault(c => c.Checkouts
+                    .Select(a => a.LibraryAsset)
+                    .Select(v => v.Id).Contains(id));
         }
 
         public string GetTitle(int id)
@@ -136,6 +139,14 @@ namespace LibraryServices
             _context.Update(item);
             item.Title = title;
            // throw new NotImplementedException();
+        }
+
+        public LibraryAsset Get(int id)
+        {
+            return _context.LibraryAssets
+               .Include(a => a.Status)
+               .Include(a => a.Location)
+               .FirstOrDefault(a => a.Id == id);
         }
 
         //Book or Video?
