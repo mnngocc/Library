@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "EditBranch";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model Library.Areas.Admin.Models.Branches.BranchDetailModel
+
+<h2>Edit Branch</h2>
+<div class="container">
+    <form method="post" action="/Admin/Branches/Update/@Model.Id" enctype="multipart/form-data">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-3">
+                    <div>
+                        <img class="detailImage" src="@Model.ImageURL" />
+                    </div>
+                    <div>
+                        <input type="file" name="ImageURL" ></>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" style="display:none" name="Id" value="@Model.Id" class="form-control"></>
+                    <label>Name: </label>
+                    <input type="text" name="Name" value="@Model.Name" class="form-control"></>
+                    <label>Address: </label>
+                    <input name="Address" type="text" id="txtAddress" class="form-control" value="@Model.Address" />
+
+                    <label>Telephone</label>
+                    <input name="Telephone" type="text" id="txtTelephone" class="form-control" value="@Model.Telephone"></>
+
+                    <label>Description</label>
+                    <textarea name="Description" rows="5" type="text" id="txtDescription" class="form-control">@Model.Description</textarea>
+
+                    <label>Open Date</label>
+
+                    <input name="OpenDate" type="date" id="txtOpenDate" class="form-control" value="@Model.OpenDate.ToString("yyyy-MM-dd")"></>
+
+                    <br />
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <p>
+                        <input class="btn btn-lg btn-info" type="submit" value="Save" />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+

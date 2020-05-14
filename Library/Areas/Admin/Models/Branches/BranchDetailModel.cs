@@ -13,7 +13,7 @@ namespace Library.Areas.Admin.Models.Branches
         public string Telephone { get; set; }
         public string Description { get; set; }
         public DateTime OpenDate { get; set; }
-        public string imageURL { get; set; }
+        public string ImageURL { get; set; }
 
     }
 }

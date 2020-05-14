@@ -55,7 +55,11 @@ namespace LibraryServices
             return assetsValue.Sum();
         }
 
-     
+        public LibraryBranch GetById(int id)
+        {
+            return GetAll().FirstOrDefault(b => b.Id == id);
+            //throw new NotImplementedException();
+        }
 
         public int GetPatronCount(int branchId)
         {
@@ -71,6 +75,34 @@ namespace LibraryServices
         public bool IsBranchOpen(int branchId)
         {
             return true;
+        }
+        public void Remove(int id)
+        {
+            var _branch = _context.LibraryBranches.Find(id);
+            _context.LibraryBranches.Remove(_branch);
+            _context.SaveChanges();
+        }
+
+        public bool Update(LibraryBranch branch)
+        {
+            var _branch = _context.LibraryBranches.Find(branch.Id);
+            try
+            {
+                _branch.Name = branch.Name;
+                _branch.Address = branch.Address;
+                _branch.Telephone = branch.Telephone;
+                _branch.Description = branch.Description;
+                _branch.OpenDate = branch.OpenDate;
+                //Update Author or Director
+
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            //throw new NotImplementedException();
         }
     }
 }

@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="wwwroot\images\branch\" />
+    <Folder Include="wwwroot\images\assets\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -82,15 +82,26 @@ namespace Library.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(Book newBook, IFormFile ImageUrl)
         {
-            newBook.ImageUrl = "/images/" + ImageUrl.FileName;
-         
+            newBook.ImageUrl = "/images/assets/" + ImageUrl.FileName;
+            /*
+            string mess = ""; 
+            mess += newBook.ImageUrl + "/";
+            mess += newBook.Title + "/";
+            mess += newBook.Author + "/";
+            mess += newBook.StatusId + "/";
+            mess += newBook.Year+ "/";
+            mess += newBook.NumberOfCopies + "/";
+            mess += newBook.ISBN + "/";
+            mess += newBook.DeweyIndex + "/";
+            mess += newBook.Cost + "/";
+            */
             _assets.Add(newBook);
             if (ImageUrl != null)
             {
-                var fileName = Path.Combine(he.WebRootPath + "/images", Path.GetFileName(ImageUrl.FileName));
+                var fileName = Path.Combine(he.WebRootPath + "/images/assets", Path.GetFileName(ImageUrl.FileName));
                 ImageUrl.CopyTo(new FileStream(fileName, FileMode.Create));
             }
-           // return Content(mess);
+            //return Content(mess);
             return RedirectToAction("ListBook");
         }
         public IActionResult CreateVideo()
@@ -115,16 +126,16 @@ namespace Library.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult CreateVideo(Video newVid, IFormFile ImageUrl)
         {
-            newVid.ImageUrl = "/images/" + ImageUrl.FileName;
+            newVid.ImageUrl = "/images/assets/" + ImageUrl.FileName;
 
             _videos.Add(newVid);
             if (ImageUrl != null)
             {
-                var fileName = Path.Combine(he.WebRootPath + "/images", Path.GetFileName(ImageUrl.FileName));
+                var fileName = Path.Combine(he.WebRootPath + "/images/assets", Path.GetFileName(ImageUrl.FileName));
                 ImageUrl.CopyTo(new FileStream(fileName, FileMode.Create));
             }
             // return Content(mess);
-            return RedirectToAction("ListBook");
+            return RedirectToAction("ListVideo");
         }
 
         public IActionResult ListVideo()
@@ -198,10 +209,17 @@ namespace Library.Areas.Admin.Controllers
             return View();
         }
         [HttpPost] 
-        public IActionResult Update(BookDetailModel asset)
+        public IActionResult Update(BookDetailModel asset, IFormFile ImageUrl)
         {
             string message = "";
             var data = _assets.GetById(asset.AssetId);
+            if (ImageUrl != null)
+            {
+                asset.ImageUrl = "/images/assets/" + ImageUrl.FileName;
+                data.ImageUrl = asset.ImageUrl;
+                var fileName = Path.Combine(he.WebRootPath + "/images/assets", Path.GetFileName(ImageUrl.FileName));
+                ImageUrl.CopyTo(new FileStream(fileName, FileMode.Create));
+            }
             if (ModelState.IsValid)
             {
                 data.Title = asset.Title;
@@ -209,7 +227,8 @@ namespace Library.Areas.Admin.Controllers
                 data.DeweyIndex = asset.Dewey;
                 data.NumberOfCopies = asset.NumberOfCopies;
                 data.Year = asset.Year;
-                data.Cost = asset.Cost;          
+                data.Cost = asset.Cost;
+                
                 bool result = _assets.Update(data);
                 if (result)
                 {
@@ -220,12 +239,9 @@ namespace Library.Areas.Admin.Controllers
                     message += "Result return false";
                 }
             }
-            else
-            {
-                message += "Fail to update";
-            }
-           // return Content(message);
-            return RedirectToAction("ListVideo");
+           
+            //return Content(message);
+            return RedirectToAction("ListBook");
         }
 
         [HttpPost]
@@ -249,8 +265,7 @@ namespace Library.Areas.Admin.Controllers
         }
 
         public IActionResult Delete(int id)
-        {
-            
+        {     
             string type_ = _asset.GetType(id);
             if (type_.Equals("Book"))
             {
@@ -264,11 +279,18 @@ namespace Library.Areas.Admin.Controllers
             }    
         }
 
-        public IActionResult UpdateVideo(VideoDetailModel asset)
+        public IActionResult UpdateVideo(VideoDetailModel asset, IFormFile ImageUrl)
         {
             string message = "";
 
             var data = _videos.GetById(asset.AssetId);
+            if (ImageUrl != null)
+            {
+                asset.ImageUrl = "/images/assets/" + ImageUrl.FileName;
+                data.ImageUrl = asset.ImageUrl;
+                var fileName = Path.Combine(he.WebRootPath + "/images/assets", Path.GetFileName(ImageUrl.FileName));
+                ImageUrl.CopyTo(new FileStream(fileName, FileMode.Create));
+            }
             if (ModelState.IsValid)
             {
                 data.Title = asset.Title;

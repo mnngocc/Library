@@ -22,26 +22,18 @@ namespace LibraryServices
         }
         public bool  Add(Book newBook)
         {
-            string mess = "";
-            mess += newBook.Title;
-            mess += "/ " + newBook.Author;
-            mess += "/ " + newBook.Year;
-            mess += "/ " + newBook.ISBN;
-            mess += "/ " + newBook.DeweyIndex;
-            mess += "/ " + newBook.NumberOfCopies;
-            mess += "/ " + newBook.Cost;
-        
+
             try
             {
                 _context.Books.Add(newBook);
                 _context.SaveChanges();
-                mess += newBook.Title + "added";
+               
                 return true;
             }
             catch
             {
                 //throw new ArgumentOutOfRangeException(nameof(newBook), "lỗi");
-                mess += "catch";
+             
                 return false;
             }
            

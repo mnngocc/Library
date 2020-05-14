@@ -7,12 +7,15 @@
 
 <h2>Edit Video</h2>
 <div class="container">
-    <form method="post" action="/Admin/Assets/UpdateVideo/@Model.AssetId">
+    <form method="post" action="/Admin/Assets/UpdateVideo/@Model.AssetId" enctype="multipart/form-data">
         <div class="jumbotron">
             <div class="row">
                 <div class="col-md-3">
                     <div>
                         <img class="detailImage" src="@Model.ImageUrl" />
+                    </div>
+                    <div>
+                        <input type="file" name="ImageUrl"></>
                     </div>
                 </div>
                 <div class="col-md-3">

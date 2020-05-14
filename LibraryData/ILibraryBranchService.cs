@@ -11,6 +11,7 @@ namespace LibraryData
         IEnumerable<LibraryBranch> GetAll();
         IEnumerable<Patron> GetPatrons(int branchId);
         IEnumerable<LibraryAsset> GetAssets(int branchId);
+        LibraryBranch GetById(int id);
         LibraryBranch Get(int branchId);
         void Add(LibraryBranch newBranch);
 //        IEnumerable<string> GetBranchHours(int branchId);
@@ -18,5 +19,7 @@ namespace LibraryData
         int GetAssetCount(int branchId);
         int GetPatronCount(int branchId);
         decimal GetAssetsValue(int id);
+        public void Remove(int id);
+        public bool Update(LibraryBranch branch);
     }
 }

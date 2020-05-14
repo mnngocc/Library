@@ -1,0 +1,54 @@
+﻿@model Library.Data.Models.LibraryBranch
+
+@{
+    ViewData["Title"] = "AddBranch";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Branch</h2>
+
+<hr />
+<div class="container">
+    <form method="post" action="/Admin/Branches/CreateBranch" enctype="multipart/form-data">
+
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-3">
+                    <div>
+                        <label>Image: </label>
+                        <input value="" ID="ImageUrl" asp-for="ImageUrl" Name="ImageUrl"
+                               class="form-control" type="file" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label>Name: </label>
+                    <input type="text" value="" asp-for="Name" Name="Name" class="form-control" placeholder="Lake Shore Branch" />
+
+                    <label>Address</label>
+                    <input type="text" value="" asp-for="Address" Name="Address" placeholder="88 Lakeshore Dr" class="form-control" />
+
+                    <label>Telephone</label>
+                    <input type="number" value="" asp-for="Telephone" Name="Telephone" placeholder="0289618575" class="form-control" />
+
+                    <label>Description</label>
+                    <input type="text" value="" asp-for="Description" Name="Description" class="form-control" />
+
+                    <label>Open Date</label>
+                    <input type="date" value="" asp-for="OpenDate" Name="OpenDate" class="form-control" />
+
+                    <br />
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <p>
+                        <input class="btn btn-lg btn-info" type="submit" value="Save" />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
