@@ -40,6 +40,19 @@ namespace LibraryData.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Role",
+                columns: table => new
+                {
+                    RoleID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleName = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Role", x => x.RoleID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Statuses",
                 columns: table => new
                 {
@@ -76,34 +89,22 @@ namespace LibraryData.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Patrons",
+                name: "User",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    DateOfBirth = table.Column<DateTime>(nullable: false),
-                    TelephoneNumber = table.Column<string>(nullable: true),
-                    LibraryCardId = table.Column<int>(nullable: true),
-                    HomeLibraryBranchId = table.Column<int>(nullable: true)
+                    Username = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    RoleID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Patrons", x => x.Id);
+                    table.PrimaryKey("PK_User", x => x.Username);
                     table.ForeignKey(
-                        name: "FK_Patrons_LibraryBranches_HomeLibraryBranchId",
-                        column: x => x.HomeLibraryBranchId,
-                        principalTable: "LibraryBranches",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Patrons_LibraryCards_LibraryCardId",
-                        column: x => x.LibraryCardId,
-                        principalTable: "LibraryCards",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_User_Role_RoleID",
+                        column: x => x.RoleID,
+                        principalTable: "Role",
+                        principalColumn: "RoleID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -140,6 +141,45 @@ namespace LibraryData.Migrations
                         principalTable: "Statuses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Patrons",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    DateOfBirth = table.Column<DateTime>(nullable: false),
+                    TelephoneNumber = table.Column<string>(nullable: true),
+                    Username = table.Column<string>(nullable: true),
+                    LibraryCardId = table.Column<int>(nullable: true),
+                    HomeLibraryBranchId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Patrons", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Patrons_LibraryBranches_HomeLibraryBranchId",
+                        column: x => x.HomeLibraryBranchId,
+                        principalTable: "LibraryBranches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Patrons_LibraryCards_LibraryCardId",
+                        column: x => x.LibraryCardId,
+                        principalTable: "LibraryCards",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Patrons_User_Username",
+                        column: x => x.Username,
+                        principalTable: "User",
+                        principalColumn: "Username",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -279,6 +319,16 @@ namespace LibraryData.Migrations
                 name: "IX_Patrons_LibraryCardId",
                 table: "Patrons",
                 column: "LibraryCardId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Patrons_Username",
+                table: "Patrons",
+                column: "Username");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_RoleID",
+                table: "User",
+                column: "RoleID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -305,10 +355,16 @@ namespace LibraryData.Migrations
                 name: "LibraryCards");
 
             migrationBuilder.DropTable(
+                name: "User");
+
+            migrationBuilder.DropTable(
                 name: "LibraryBranches");
 
             migrationBuilder.DropTable(
                 name: "Statuses");
+
+            migrationBuilder.DropTable(
+                name: "Role");
         }
     }
 }

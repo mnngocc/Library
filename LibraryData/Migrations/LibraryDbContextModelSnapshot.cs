@@ -255,6 +255,9 @@ namespace LibraryData.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
@@ -270,13 +273,53 @@ namespace LibraryData.Migrations
                     b.Property<string>("TelephoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("HomeLibraryBranchId");
 
                     b.HasIndex("LibraryCardId");
 
+                    b.HasIndex("Username");
+
                     b.ToTable("Patrons");
+                });
+
+            modelBuilder.Entity("LibraryData.Models.Role", b =>
+                {
+                    b.Property<int>("RoleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RoleID");
+
+                    b.ToTable("Role");
+                });
+
+            modelBuilder.Entity("LibraryData.Models.User", b =>
+                {
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoleID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Username");
+
+                    b.HasIndex("RoleID");
+
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Library.Data.Models.Book", b =>
@@ -377,6 +420,19 @@ namespace LibraryData.Migrations
                     b.HasOne("Library.Data.Models.LibraryCard", "LibraryCard")
                         .WithMany()
                         .HasForeignKey("LibraryCardId");
+
+                    b.HasOne("LibraryData.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("Username");
+                });
+
+            modelBuilder.Entity("LibraryData.Models.User", b =>
+                {
+                    b.HasOne("LibraryData.Models.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

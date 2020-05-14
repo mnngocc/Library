@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\Library\\Library.csproj": {}
+    "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\Library\\Library.csproj": {}
   },
   "projects": {
-    "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryData\\LibraryData.csproj": {
+    "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\LibraryData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryData\\LibraryData.csproj",
+        "projectUniqueName": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\LibraryData.csproj",
         "projectName": "LibraryData",
-        "projectPath": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryData\\LibraryData.csproj",
-        "packagesPath": "C:\\Users\\mainh\\.nuget\\packages\\",
-        "outputPath": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryData\\obj\\",
+        "projectPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\LibraryData.csproj",
+        "packagesPath": "C:\\Users\\17520\\.nuget\\packages\\",
+        "outputPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mainh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\17520\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,17 +76,17 @@
         }
       }
     },
-    "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryServices\\LibraryServices.csproj": {
+    "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryServices\\LibraryServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryServices\\LibraryServices.csproj",
+        "projectUniqueName": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryServices\\LibraryServices.csproj",
         "projectName": "LibraryServices",
-        "projectPath": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryServices\\LibraryServices.csproj",
-        "packagesPath": "C:\\Users\\mainh\\.nuget\\packages\\",
-        "outputPath": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryServices\\obj\\",
+        "projectPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryServices\\LibraryServices.csproj",
+        "packagesPath": "C:\\Users\\17520\\.nuget\\packages\\",
+        "outputPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryServices\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mainh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\17520\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,8 +99,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryData\\LibraryData.csproj": {
-                "projectPath": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryData\\LibraryData.csproj"
+              "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\LibraryData.csproj": {
+                "projectPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\LibraryData.csproj"
               }
             }
           }
@@ -132,17 +132,17 @@
         }
       }
     },
-    "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\Library\\Library.csproj": {
+    "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\Library\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\Library\\Library.csproj",
+        "projectUniqueName": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\Library\\Library.csproj",
         "projectName": "Library",
-        "projectPath": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\Library\\Library.csproj",
-        "packagesPath": "C:\\Users\\mainh\\.nuget\\packages\\",
-        "outputPath": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\Library\\obj\\",
+        "projectPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\Library\\Library.csproj",
+        "packagesPath": "C:\\Users\\17520\\.nuget\\packages\\",
+        "outputPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mainh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\17520\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -155,11 +155,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryData\\LibraryData.csproj": {
-                "projectPath": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryData\\LibraryData.csproj"
+              "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\LibraryData.csproj": {
+                "projectPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\LibraryData.csproj"
               },
-              "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryServices\\LibraryServices.csproj": {
-                "projectPath": "E:\\HK2-1920\\Framework\\Project\\Git\\Library\\LibraryServices\\LibraryServices.csproj"
+              "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryServices\\LibraryServices.csproj": {
+                "projectPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryServices\\LibraryServices.csproj"
               }
             }
           }

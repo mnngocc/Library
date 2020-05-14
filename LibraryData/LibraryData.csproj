@@ -5,15 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200426025920_Initial migration.cs" />
-    <Compile Remove="Migrations\20200426025920_Initial migration.Designer.cs" />
-    <Compile Remove="Migrations\20200426031218_Initial migration.cs" />
-    <Compile Remove="Migrations\20200426031218_Initial migration.Designer.cs" />
-    <Compile Remove="Migrations\20200426031335_Initial migration.cs" />
-    <Compile Remove="Migrations\20200426031335_Initial migration.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Castle.Windsor" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
