@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Library.Areas.Admin.Models.Statuses
+namespace Library.Areas.Admin.Models.Branches
 {
     public class BranchDetailModel
     {
@@ -14,7 +14,6 @@ namespace Library.Areas.Admin.Models.Statuses
         public string Description { get; set; }
         public DateTime OpenDate { get; set; }
         public string imageURL { get; set; }
-
 
     }
 }

@@ -7,6 +7,6 @@ namespace Library.Areas.Admin.Models.Branches
 {
     public class BranchIndexModel
     {
-        public IEnumerable<BranchIndexModel> Branches { get; set; }
+        public IEnumerable<BranchDetailModel> Branches { get; set; }
     }
 }
