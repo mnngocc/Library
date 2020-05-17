@@ -17,6 +17,7 @@ namespace Library.Areas.Admin.Models.Assets
         public string Dewey { get; set; }
         public string Status { get; set; }
         public decimal Cost { get; set; }
+        public string Location { get; set; }
         public string ImageUrl { get; set; }
     }
 }

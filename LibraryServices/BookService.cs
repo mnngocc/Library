@@ -68,7 +68,6 @@ namespace LibraryServices
             {
                 return _context.Books.FirstOrDefault(book => book.Id == id).DeweyIndex;
             }
-
             else return "";
         }
 
@@ -80,6 +79,10 @@ namespace LibraryServices
             }
             else
                 return "";
+        }
+        public LibraryBranch GetCurrentLocation(int id)
+        {
+            return GetById(id).Location;
         }
 
         public string GetTitle(int id)
@@ -98,7 +101,6 @@ namespace LibraryServices
                 _asset.NumberOfCopies = book.NumberOfCopies;
                 _asset.Author = book.Author;
                 _asset.DeweyIndex = book.DeweyIndex;
-                
                 //Update Author or Director
                 _context.SaveChanges();
                 return true;

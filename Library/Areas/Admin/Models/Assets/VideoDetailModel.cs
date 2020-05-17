@@ -15,5 +15,7 @@ namespace Library.Areas.Admin.Models.Assets
         public string Status { get; set; }
         public decimal Cost { get; set; }
         public string ImageUrl { get; set; }
+        public string Location { get; set; }
     }
+
 }

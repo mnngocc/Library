@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
 using Library.Areas.Admin.Models.Assets;
+using Library.Areas.Admin.Models.Branches;
 using Library.Areas.Admin.Models.Statuses;
 using Library.Data.Models;
 using Library.Models.Catalog;
@@ -13,6 +14,7 @@ using LibraryServices;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Hosting;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
@@ -26,15 +28,17 @@ namespace Library.Areas.Admin.Controllers
         private IBook _assets;
         private IVideo _videos;
         private IStatus _statuses;
+        private ILibraryBranchService _branch;
         private readonly IWebHostEnvironment he;
 
-        public AssetsController(ILibraryAsset la,IBook assets, IVideo videos, IStatus stt, IWebHostEnvironment e)
+        public AssetsController(ILibraryAsset la,IBook assets, IVideo videos, IStatus stt, IWebHostEnvironment e, ILibraryBranchService branch)
         {
             _assets = assets;
             _videos = videos;
             _statuses = stt;
             he = e;
             _asset = la;
+            _branch = branch;
         }
       
         public IActionResult ListBook()
@@ -51,7 +55,9 @@ namespace Library.Areas.Admin.Controllers
                             NumberOfCopies = result.NumberOfCopies.ToString(),
                             Year = result.Year.ToString(),
                             Status = result.Status.ToString(),
-                            Cost = result.Cost.ToString()
+                            Cost = result.Cost.ToString(),                      
+                            Location = _asset.GetCurrentLocation(result.Id)?.Name.ToString()
+                           // Location = result.Location.Name
                         });
             var model = new BookIndexModel()
             {
@@ -62,8 +68,8 @@ namespace Library.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            
             var assetModels = _statuses.GetAll();
+            
             var ListingResult = assetModels
                         .Select(result => new StatusIndexListingModel
                         {
@@ -73,40 +79,27 @@ namespace Library.Areas.Admin.Controllers
                         });
              var model_ = new StatusIndexModel()
             {
-                Statuses = ListingResult
-            };
-          
-            return View(model_);
+                Statuses = ListingResult,
+               
+             };
            
+            return View(model_);
         }
         [HttpPost]
         public IActionResult Create(Book newBook, IFormFile ImageUrl)
         {
-            newBook.ImageUrl = "/images/assets/" + ImageUrl.FileName;
-            /*
-            string mess = ""; 
-            mess += newBook.ImageUrl + "/";
-            mess += newBook.Title + "/";
-            mess += newBook.Author + "/";
-            mess += newBook.StatusId + "/";
-            mess += newBook.Year+ "/";
-            mess += newBook.NumberOfCopies + "/";
-            mess += newBook.ISBN + "/";
-            mess += newBook.DeweyIndex + "/";
-            mess += newBook.Cost + "/";
-            */
-            _assets.Add(newBook);
             if (ImageUrl != null)
             {
+                newBook.ImageUrl = "/images/assets/" + ImageUrl.FileName;
                 var fileName = Path.Combine(he.WebRootPath + "/images/assets", Path.GetFileName(ImageUrl.FileName));
                 ImageUrl.CopyTo(new FileStream(fileName, FileMode.Create));
-            }
+            }    
+            _assets.Add(newBook);        
             //return Content(mess);
             return RedirectToAction("ListBook");
         }
         public IActionResult CreateVideo()
         {
-
             var assetModels = _statuses.GetAll();
             var ListingResult = assetModels
                         .Select(result => new StatusIndexListingModel
@@ -126,14 +119,14 @@ namespace Library.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult CreateVideo(Video newVid, IFormFile ImageUrl)
         {
-            newVid.ImageUrl = "/images/assets/" + ImageUrl.FileName;
-
-            _videos.Add(newVid);
             if (ImageUrl != null)
             {
+                newVid.ImageUrl = "/images/assets/" + ImageUrl.FileName;
                 var fileName = Path.Combine(he.WebRootPath + "/images/assets", Path.GetFileName(ImageUrl.FileName));
                 ImageUrl.CopyTo(new FileStream(fileName, FileMode.Create));
             }
+            _videos.Add(newVid);
+         
             // return Content(mess);
             return RedirectToAction("ListVideo");
         }
@@ -152,7 +145,8 @@ namespace Library.Areas.Admin.Controllers
                             NumberOfCopies = result.NumberOfCopies.ToString(),
                             Year = result.Year.ToString(),
                             Status = result.Status.ToString(),
-                            Cost = result.Cost.ToString()
+                            Cost = result.Cost.ToString(),
+                            Location = _asset.GetCurrentLocation(result.Id)?.Name.ToString()    
                         });
             var model = new VideoIndexModel()
             {
@@ -244,24 +238,37 @@ namespace Library.Areas.Admin.Controllers
             return RedirectToAction("ListBook");
         }
 
-        [HttpPost]
-        public IActionResult Insert(Book book)
-        {
-            string message = "Insert";
-            _assets.Add(book);         
-            return Content(message);
-            // return RedirectToAction("ListBook");
-
-        }
         public IActionResult AddBook()
         {
+            string mess = "";
+            var list = _branch.GetAll();
+            IEnumerable<BranchDetailModel> ResultBranch = list.
+                            Select(result => new BranchDetailModel
+                            {
+                                Id = result.Id,
+                                Name = result.Name,
+                            });
+            List<BranchDetailModel> listBranch = ResultBranch.ToList();
+            SelectList branchList = new SelectList(listBranch, "Id", "Name");
+            ViewBag.branchList = branchList;
+            mess += branchList.ToArray().Length;
+           // return Content(mess);
             return View();
 
         }
         public IActionResult AddVideo()
         {
+            var list = _branch.GetAll();
+            IEnumerable<BranchDetailModel> ResultBranch = list.
+                            Select(result => new BranchDetailModel
+                            {
+                                Id = result.Id,
+                                Name = result.Name,
+                            });
+            List<BranchDetailModel> listBranch = ResultBranch.ToList();
+            SelectList branchList = new SelectList(listBranch, "Id", "Name");
+            ViewBag.branchList = branchList;
             return View();
-
         }
 
         public IActionResult Delete(int id)

@@ -21,9 +21,11 @@ namespace LibraryServices
 
         public void Add(LibraryBranch newBranch)
         {
+          
             _context.Add(newBranch);
             _context.SaveChanges();
         }
+      
 
         public LibraryBranch Get(int branchId)
         {
@@ -53,6 +55,15 @@ namespace LibraryServices
         {
             var assetsValue = GetAssets(branchId).Select(a => a.Cost);
             return assetsValue.Sum();
+        }
+
+        public IEnumerable<string> GetBranchHours(int branchId)
+        {        
+                var hours = _context.BranchHours.Where(a => a.Branch.Id == branchId);
+
+                var displayHours =
+                    DataHelpers.HumanizeBusinessHours(hours);
+                return displayHours; 
         }
 
         public LibraryBranch GetById(int id)
@@ -103,6 +114,11 @@ namespace LibraryServices
                 return false;
             }
             //throw new NotImplementedException();
+        }
+
+        IEnumerable<LibraryBranch> ILibraryBranchService.ToList()
+        {
+            return _context.LibraryBranches.ToList();
         }
     }
 }

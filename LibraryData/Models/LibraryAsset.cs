@@ -11,9 +11,10 @@ namespace Library.Data.Models
 
         [Required] public string Title { get; set; }
         [Required] public int Year { get; set; } // Just store as an int for BC
-         public Status Status { get; set; }
+        public Status Status { get; set; }
+    
         public int StatusId { get; set; }
-
+        public int LocationId { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Cost { get; set; }

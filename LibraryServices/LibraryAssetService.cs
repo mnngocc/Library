@@ -33,7 +33,6 @@ namespace LibraryServices
             return _context.LibraryAssets
                                     .Include(asset => asset.Status)
                                     .Include(asset => asset.Location);
-           // throw new NotImplementedException();
         }
 
         public string GetAuthorOrDirector(int id)
@@ -46,7 +45,7 @@ namespace LibraryServices
                 _context.Books.FirstOrDefault(book => book.Id == id).Author :
                 _context.Videos.FirstOrDefault(video => video.Id == id).Director
                 ?? "Unknown";
-            //  throw new NotImplementedException();
+            
         }
         public string GetType(int id)
         {

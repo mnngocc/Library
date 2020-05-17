@@ -16,5 +16,6 @@ namespace Library.Areas.Admin.Models.Assets
         public string Year { get; set; }
         public string Status { get; set; }
         public string Cost { get; set; }
+        public string Location { get; set; }
     }
 }
