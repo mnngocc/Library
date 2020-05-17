@@ -38,6 +38,7 @@ namespace Library
             services.AddScoped<IVideo, VideoService>();
             services.AddScoped<IStatus, StatusService>();
             services.AddScoped<ILibraryBranchService, LibraryBranchService>();
+            services.AddScoped<IPatron, PatronService>();
 
             services.AddDbContext<LibraryDbContext>(options 
                   => options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));

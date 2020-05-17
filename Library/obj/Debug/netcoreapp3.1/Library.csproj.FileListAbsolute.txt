@@ -493,3 +493,5 @@ E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Area
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Branches\EditBranch.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\Checkout.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\Hold.cshtml.g.cs
+E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Index.cshtml.g.cs
+E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Detail.cshtml.g.cs
