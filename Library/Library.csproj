@@ -27,6 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Employee\Data\" />
+    <Folder Include="Areas\Employee\Models\" />
+    <Folder Include="Areas\GeneralUser\Controllers\" />
+    <Folder Include="Areas\GeneralUser\Data\" />
+    <Folder Include="Areas\GeneralUser\Models\" />
+    <Folder Include="Areas\GeneralUser\Views\" />
     <Folder Include="wwwroot\images\branch\" />
     <Folder Include="wwwroot\images\assets\" />
   </ItemGroup>

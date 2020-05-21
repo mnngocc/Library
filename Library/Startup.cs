@@ -40,7 +40,7 @@ namespace Library
             services.AddScoped<ILibraryBranchService, LibraryBranchService>();
             services.AddScoped<IPatron, PatronService>();
 
-            services.AddDbContext<LibraryDbContext>(options 
+            services.AddDbContext<LibraryDbContext>(options
                   => options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));
             services.AddControllers(options => options.EnableEndpointRouting = false);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -67,21 +67,21 @@ namespace Library
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-              
-            });
-
+            
+           
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                  name: "areas",
-                  template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
+                routes.MapAreaRoute(
+                name: "default",
+                areaName: "Employee",
+                template: "Employee/{controller}/{action}/{id?}",
+                defaults: new { controller = "Home", action = "Index" });
+
+                routes.MapAreaRoute(
+                name: "admin",
+                areaName: "Admin",
+                template: "Admin/{controller}/{action}/{id?}",
+                defaults: new { controller = "Home", action = "Index" });
             });
 
 
