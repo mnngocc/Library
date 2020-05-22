@@ -1,8 +1,64 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using Library.Areas.Admin.Models.Branches
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@{
+    ViewBag.Title = "LIBRARY";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="home-slider owl-carousel">
+    @foreach (var branch in Model.Branches)
+    {
+        <div class="slider-item" style="background-image: url('..@branch.ImageURL') ;">
+            <div class="container">
+                <div class="row slider-text align-items-center justify-content-center">
+                    <div class="col-lg-7 text-center col-sm-12 element-animate">
+
+                        <h1 class="mb-4"><span><a asp-controller="Branch" asp-action="Detail" asp-route-id="@branch.Id">@branch.Name</a></span></h1>
+                        <p class="mb-5 w-75" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 10px">@branch.Description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</section>
+<!-- END slider -->
+
+
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-4 element-animate ">
+                <div class="media block-6 d-block text-center">
+                    <div class="icon mb-3"><span class="ion-bookmark text-primary"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading">Automotive Parts</h3>
+                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6 col-lg-4 element-animate ">
+                <div class="media block-6 d-block text-center">
+                    <div class="icon mb-3"><span class="ion-heart text-primary"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading">Maintenance Services</h3>
+                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6 col-lg-4 element-animate ">
+                <div class="media block-6 d-block text-center">
+                    <div class="icon mb-3"><span class="ion-leaf text-primary"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading">Green Energy</h3>
+                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+

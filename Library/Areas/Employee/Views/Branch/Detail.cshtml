@@ -18,6 +18,7 @@
             <div class="col-md-8">
                 <div>
                     <h2>@Model.BranchName</h2>
+                    
                     <div class="branchContact">
                         <div id="branchAddress">Address: @Model.Address</div>
                         <div id="branchTel">Telephone: @Model.Telephone</div>
@@ -28,7 +29,7 @@
 
                     <div id="branchHours">
                         <ul>
-                            @foreach(var day in @Model.HoursOpen)
+                            @foreach (var day in @Model.HoursOpen)
                             {
                                 <li>@day</li>
                             }

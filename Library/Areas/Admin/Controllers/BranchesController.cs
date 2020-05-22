@@ -50,7 +50,10 @@ namespace Library.Areas.Admin.Controllers
                            Address = result.Address,
                            Telephone = result.Telephone,
                            Description = result.Description,
-                           OpenDate = result.OpenDate
+                           OpenDate = result.OpenDate,           
+                           NumberOfAssets = _branch.GetAssetCount(result.Id),
+                           NumberOfPatrons = _branch.GetPatronCount(result.Id),
+                           IsOpen = _branch.IsBranchOpen(result.Id)
                        });
             var model_branch = new BranchIndexModel()
             {

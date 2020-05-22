@@ -15,5 +15,14 @@ namespace Library.Areas.Admin.Models.Branches
         public DateTime OpenDate { get; set; }
         public string ImageURL { get; set; }
 
+        public string BranchOpenedDate { get; set; }
+        public bool IsOpen { get; set; }
+
+        public int NumberOfPatrons { get; set; }
+        public int NumberOfAssets { get; set; }
+        public decimal TotalAssetValue { get; set; }
+        public string ImageUrl { get; set; }
+        public IEnumerable<string> HoursOpen { get; set; }
+
     }
 }

@@ -67,12 +67,21 @@ namespace Library
 
             app.UseAuthorization();
 
-            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+            });
+
            
             app.UseMvc(routes =>
             {
+               
                 routes.MapAreaRoute(
-                name: "default",
+                name: "employee",
                 areaName: "Employee",
                 template: "Employee/{controller}/{action}/{id?}",
                 defaults: new { controller = "Home", action = "Index" });

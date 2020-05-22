@@ -1,40 +1,136 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" stype="style/css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/styles.css" />
+    <title>LIBRARY</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Oxygen:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Assets/general/css/animate.css">
+    <link rel="stylesheet" href="~/Assets/general/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/general/css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="~/Assets/general/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Assets/general/fonts/fontawesome/css/font-awesome.min.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="~/Assets/general/css/style.css">
+
 </head>
 
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="custom-header mdl-layout__header mdl-layout__header--waterfall">
-            <div class="mdl-layout__header-row">
-                <!-- Title -->
-                <span class="mdl-layout-title logo"><a href="/">LightLib</a></span>
-                <!-- Add spacer, to align navigation to the right -->
-                <div class="mdl-layout-spacer"></div>
-                <!-- Navigation. We hide it in small screens. -->
-              
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand " asp-controller="Home" asp-action="Index">OUR LIBRARY</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample05">
+                    <ul class="navbar-nav pl-md-5 ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.html">Projects</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="services.html">Architectural Design</a>
+                                <a class="dropdown-item" href="services.html">Interior</a>
+                                <a class="dropdown-item" href="services.html">Building</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+
+
+                </div>
             </div>
-        </header>
-        <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">LightLib</span>
-          
-        </div>
+        </nav>
+    </header>
+
+
+    <div class="top-shadow"></div>
+    
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+
         <div class="page-content">
             @RenderBody()
+
+            <footer class="site-footer" role="contentinfo">
+                <div class="container">
+                    <div class="row mb-5" id="about">
+                        <div class="col-md-4 mb-5">
+                            <h3>About Us</h3>
+                            <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. .</p>
+                            <ul class="list-unstyled footer-link d-flex footer-social">
+                                <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
+                                <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-md-5 mb-5 pl-md-5" id="contact">
+                            <h3>Contact Info</h3>
+                            <ul class="list-unstyled footer-link">
+                                <li class="d-block">
+                                    <span class="d-block">Address:</span>
+                                    <span>University of Infomation Technology, HCM National University, HCM City</span>
+                                </li>
+                                <li class="d-block"><span class="d-block">Telephone:</span><span>+84 388 197 156</span></li>
+                                <li class="d-block"><span class="d-block">Email:</span><span>mnngoc105@gmail.com</span></li>
+                            </ul>
+                        </div>
+                       
+                        <div class="col-md-3">
+                            <h3>Member</h3>
+                            <ul class="list-unstyled footer-link">
+                                <li class="d-block">Mai Nhu Ngoc</li>
+                                <li class="d-block">Nguyen Phi Yen</li>
+                                <li class="d-block">Tran Huu Phat</li>
+                                <li class="d-block">Nguyen Huu Phuoc</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-md-center text-left">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214" /></svg></div>
 
-    @RenderSection("Styles", required: false)
-    @RenderSection("Scripts", required: false)
-    <script src="https://use.fontawesome.com/6110b02b27.js"></script>
+    <script src="~/Assets/general/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/general/js/popper.min.js"></script>
+    <script src="~/Assets/general/js/bootstrap.min.js"></script>
+    <script src="~/Assets/general/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/general/js/jquery.waypoints.min.js"></script>
+    <script src="~/Assets/general/js/jquery.fancybox.min.js"></script>
+    <script src="~/Assets/general/js/main.js"></script>
+
+    <script src="~/Assets/general/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,73 @@
+﻿@model Library.Areas.Admin.Models.Branches.BranchDetailModel
+
+@{
+    ViewBag.Title = "@Model.Branch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section class="home-slider owl-carousel">
+       
+            <div class="slider-item" style="background-image: url('@Model.ImageURL') ;">
+                <div class="container">
+                    <div class="row slider-text align-items-center justify-content-center">
+                        <div class="col-lg-7 text-center col-sm-12 element-animate">
+
+                            <h1 class="mb-4"><span><a asp-controller="Branch" asp-action="Detail" asp-route-id="@Model.Id">@Model.Name</a></span></h1>
+                            <p class="mb-5 w-75" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 10px">@Model.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <div class="row branchInfo">
+                <div class="col-md-8  element-animate">
+                    <div>
+                        <h2>@Model.Name</h2>
+
+                        <div class="branchContact">
+                            <div id="branchAddress">Address: @Model.Address</div>
+                            <div id="branchTel">Telephone: @Model.Telephone</div>
+                        </div>
+                        <div id="branchDescription">
+                            <p class="caption">@Model.Description</p>
+                        </div>
+
+                        <div id="branchHours">
+                            <ul>
+                                @foreach (var day in @Model.HoursOpen)
+                                {
+                                    <li>@day</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 detailInfo  element-animate">
+                    <table>
+                        <tr>
+                            <td class="itemLabel">Date Opened: </td>
+                            <td class="itemValue">@Model.BranchOpenedDate</td>
+                        </tr>
+                        <tr>
+                            <td class="itemLabel">Number Of Patrons: </td>
+                            <td class="itemValue">@Model.NumberOfPatrons</td>
+                        </tr>
+                        <tr>
+                            <td class="itemLabel">Number of Assets: </td>
+                            <td class="itemValue">@Model.NumberOfAssets</td>
+                        </tr>
+                        <tr>
+                            <td class="itemLabel">Value of Assets: </td>
+                            <td class="itemValue">$@Model.TotalAssetValue</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            </div>
+    </section>
+
