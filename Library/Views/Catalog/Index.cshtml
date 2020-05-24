@@ -1,0 +1,32 @@
+﻿@model Library.Models.Catalog.AssetIndexModel
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var asset in Model.Assets)
+            {
+            <div class="col-md-6 col-lg-4 element-animate ">
+                <div class="media block-6 d-block">
+               
+                    <div class="media-body">
+                        <a asp-controller="Catalog" asp-action="Detail"
+                           asp-route-id="@asset.Id" >
+                            <img src="@asset.ImageURL" class="imageCell" style="width: 200px; height:200px" />
+                        </a>
+                        <h3 class="heading">@asset.Title</h3>
+                        <p><strong>Author/Director: </strong>@asset.AuthorOrDirector</p>
+                        <p><strong>Type: </strong>@asset.Type</p>
+                        <p><strong>Last Location: </strong>@asset.CurrentLocation</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+        </div>
+    </div>
+
+</section>

@@ -15,6 +15,7 @@ namespace Library.Models.Patron
         public string Telephone { get; set; }
         public string HomeLibrary { get; set; }
         public decimal? OverdueFees { get; set; }
+        public string Username { get; set; }
         public IEnumerable<Checkout> AssetsCheckedOut { get; set; }
         public IEnumerable<CheckoutHistory> CheckoutHistory { get; set; }
         public IEnumerable<Hold> Holds { get; set; }

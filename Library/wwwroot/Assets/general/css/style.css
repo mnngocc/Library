@@ -6320,7 +6320,7 @@ button.bg-dark:focus {
 
 .ml-auto,
 .mx-auto {
-  margin-left: auto !important; }
+  margin-left: 550px; }
 
 @media (min-width: 576px) {
   .m-sm-0 {
@@ -7340,7 +7340,6 @@ textarea.form-control {
 /* Header */
 header {
   position: absolute;
-  top: 30px;
   left: 0;
   width: 100%;
   z-index: 5; }

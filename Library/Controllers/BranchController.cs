@@ -54,7 +54,8 @@ namespace Library.Controllers
                 TotalAssetValue = _branchService.GetAssetsValue(id),
           
                 HoursOpen = _branchService.GetBranchHours(id),
-    
+                AssetsTitle = _branchService.GetAssetsTitle(id)
+
             };
 
             return View(model);

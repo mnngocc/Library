@@ -54,6 +54,7 @@ namespace Library.Areas.Admin.Controllers
                            NumberOfAssets = _branch.GetAssetCount(result.Id),
                            NumberOfPatrons = _branch.GetPatronCount(result.Id),
                            IsOpen = _branch.IsBranchOpen(result.Id)
+                           
                        });
             var model_branch = new BranchIndexModel()
             {

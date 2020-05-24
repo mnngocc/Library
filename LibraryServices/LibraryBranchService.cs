@@ -1,9 +1,11 @@
-﻿using Library.Data;
+﻿using Castle.MicroKernel.Registration.Proxy;
+using Library.Data;
 using Library.Data.Models;
 using LibraryData;
 
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,6 +57,20 @@ namespace LibraryServices
         {
             var assetsValue = GetAssets(branchId).Select(a => a.Cost);
             return assetsValue.Sum();
+        }
+        public Dictionary<string, int> GetAssetsTitle(int branchId)
+        {
+            //IList listAsssets = null;           
+            Dictionary<string, int> listAssets = new Dictionary<string, int>();
+            var assetsItem = GetAssets(branchId);
+            foreach (var item in assetsItem)
+            {
+                var Title = item.Title;
+                var Id = item.Id;
+                //var Asset = $"{Title} {Id}";
+                listAssets.Add(Title, Id);
+            }    
+            return listAssets;
         }
 
         public IEnumerable<string> GetBranchHours(int branchId)

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Library.Models;
+using LibraryData;
+using Library.Models.Catalog;
 
 namespace Library.Areas.Employee.Controllers
 {
@@ -14,21 +16,37 @@ namespace Library.Areas.Employee.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ILibraryAsset _assets;
+        private ICheckout _checkouts;
+        public HomeController(ILibraryAsset assets, ICheckout checkouts, ILogger<HomeController> logger)
         {
+            _assets = assets;
+            _checkouts = checkouts;
             _logger = logger;
         }
 
+
         public IActionResult Index()
         {
-            return View();
+            var assetModels = _assets.GetAll();
+            var ListingResult = assetModels
+                        .Select(result => new AssetIndexListingModel
+                        {
+                            Id = result.Id,
+                            ImageURL = result.ImageUrl,
+                            AuthorOrDirector = _assets.GetAuthorOrDirector(result.Id),
+                            DeweyCallNumber = _assets.GetDeweyIndex(result.Id),
+                            Title = result.Title,
+                            Type = _assets.GetType(result.Id)
+                        });
+            var model = new AssetIndexModel()
+            {
+                Assets = ListingResult
+            };
+            return View(model);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

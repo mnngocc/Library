@@ -15,6 +15,7 @@ namespace Library.Models.Catalog
         public string DeweyCallNumber { get; set; }
         public int NumberOfCopies { get; set; }
         public int CopiesAvailable { get; set; }
+        public string CurrentLocation { get; set; }
 
     }
 }

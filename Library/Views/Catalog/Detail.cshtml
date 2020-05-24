@@ -1,0 +1,73 @@
+﻿@using Library.Models.Catalog
+
+@model Library.Models.Catalog.AssetDetailModel
+@{
+    ViewBag.Title = @Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="container">
+        <div class="header clearfix detailHeading">
+            
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-4">
+                    <div>
+                        <img class="detailImage" src="@Model.ImageUrl" style="width: 300px; " />
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <strong style="font-size:30px" id="itemTitle">@Model.Title</strong>
+                    <p id="itemAuthor">@Model.AuthorOrDirector</p>
+                    <p id="itemStatus">Status: @Model.Status</p>
+                    <p id="itemType">Type: @Model.Type</p>
+                    <p id="itemLocation">Last Location: @Model.CurrentLocation</p>
+                    @if (Model.Status == "Checked Out")
+                    {
+                        <p id="itemPatron">Checked Out By: @Model.PatronName</p>
+                    }
+
+                    @if (@Model.Status != "Lost")
+                    {
+                        @if (@Model.Status == "Available")
+                        {
+                            <p style="color:green"><strong>Available for Checking Out</strong></p>
+                        }
+
+                        @if (@Model.Status == "Checked Out")
+                        {
+
+                            <p><a class="btn btn-lg btn-warning" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.AssetId">Place Hold</a></p>
+                        }
+
+
+                    }
+
+                    else
+                    {
+                <strong style="color:darkred">This item has been lost. It cannot be checked out.</strong>
+                        
+                    }
+
+                </div>
+                <div class="col-md-4 detailInfo">
+                    <table>
+
+                        <tr>
+                            <td class="itemLabel">Replacement Cost: </td>
+                            <td class="itemValue">$@Model.Cost</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+<hr />

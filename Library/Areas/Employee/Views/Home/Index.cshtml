@@ -1,9 +1,46 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Library.Models.Catalog.AssetIndexModel
+@{
+    ViewBag.Title = "Library Catalog";
     Layout = "~/Areas/Employee/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="assets">
+    <h3>
+        Library Catalog
+    </h3>
+
+    <div id="assetsTable">
+        <table class="table table-condensed" id=" catalogIndexTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Author/Director</th>
+                    <th>Dewey Call Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var asset in Model.Assets)
+                {
+                    <tr class="assetRow">
+                        <td class="">
+                            <a asp-controller="Catalog" asp-action="Detail"
+                               asp-route-id="@asset.Id">
+                                <img src="@asset.ImageURL" class="imageCell" />
+                            </a>
+                        </td>
+                        <td class="">
+                            @asset.Title
+                        </td>
+                        <td class="">
+                            @asset.AuthorOrDirector
+                        </td>
+                        <td class="">
+                            @asset.DeweyCallNumber
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

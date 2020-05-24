@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.Models.Catalog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Library.Areas.Admin.Models.Branches
         public decimal TotalAssetValue { get; set; }
         public string ImageUrl { get; set; }
         public IEnumerable<string> HoursOpen { get; set; }
+        public Dictionary<string, int> AssetsTitle { get; set; }
 
     }
 }

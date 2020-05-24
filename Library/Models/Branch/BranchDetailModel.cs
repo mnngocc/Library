@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Library.Data.Models;
+using Library.Models.Catalog;
+using System.Collections.Generic;
 
 namespace Library.Models.Branch
 {
@@ -16,5 +18,6 @@ namespace Library.Models.Branch
         public decimal TotalAssetValue { get; set; }
         public string ImageUrl { get; set; }
         public IEnumerable<string> HoursOpen { get; set; }
+        public string AssetsTitle { get; set; }
     }
 }

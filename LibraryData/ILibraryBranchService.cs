@@ -18,6 +18,9 @@ namespace LibraryData
         IEnumerable<string> GetBranchHours(int branchId);
         bool IsBranchOpen(int branchId);
         int GetAssetCount(int branchId);
+
+        public Dictionary<string, int> GetAssetsTitle(int branchId);
+
         int GetPatronCount(int branchId);
         decimal GetAssetsValue(int id);
         public void Remove(int id);

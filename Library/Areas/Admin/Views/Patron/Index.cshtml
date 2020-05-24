@@ -1,0 +1,44 @@
+﻿
+@model Library.Models.Patron.PatronIndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" stype="style/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<h3>Patrons</h3>
+<br />
+<a class="btn btn-lg btn-success" href="/Admin/Patron/AddPatron">Add a new patron</a>
+<br />
+<br />
+<div id="patronIndex">
+    <table class="table table-condensed" id="patronIndexTable">
+        <thead>
+            <tr>
+                <th>Profile Link</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Library Card Id</th>
+                <th>Overdue Fees</th>
+                <th>Home Library</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var patron in Model.Patrons)
+            {
+                <tr>
+                    <td id="patronIcon"><a asp-controller="Patron" asp-action="Detail" asp-route-id="@patron.Id"><i class="fa fa-user fa-2x"></i></a></td>
+                    <td>@patron.LastName</td>
+                    <td>@patron.FirstName</td>
+                    <td>@patron.LibraryCardId</td>
+                    <td>@patron.OverdueFees</td>
+                    <td>@patron.HomeLibrary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

@@ -480,7 +480,6 @@ E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Area
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Catalog\Hold.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Catalog\Index.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Home\Index.cshtml.g.cs
-E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Home\Privacy.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Detail.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Index.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Shared\_Layout.cshtml.g.cs
@@ -504,3 +503,8 @@ E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Area
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\_ViewStart.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Branch\Detail.cshtml.g.cs
 E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Branch\Index.cshtml.g.cs
+E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\Index.cshtml.g.cs
+E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\Detail.cshtml.g.cs
+E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\Hold.cshtml.g.cs
+E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Patron\Detail.cshtml.g.cs
+E:\HK2-1920\Framework\LIBRARY\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Patron\Index.cshtml.g.cs
