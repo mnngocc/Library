@@ -8647,19 +8647,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\17520\\.nuget\\packages\\": {}
+    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\Library\\Library.csproj",
+      "projectUniqueName": "E:\\KH2-1920\\Framework\\Project\\Library\\Library\\Library.csproj",
       "projectName": "Library",
-      "projectPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\Library\\Library.csproj",
-      "packagesPath": "C:\\Users\\17520\\.nuget\\packages\\",
-      "outputPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\Library\\obj\\",
+      "projectPath": "E:\\KH2-1920\\Framework\\Project\\Library\\Library\\Library.csproj",
+      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+      "outputPath": "E:\\KH2-1920\\Framework\\Project\\Library\\Library\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\17520\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8672,11 +8672,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\LibraryData.csproj": {
-              "projectPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryData\\LibraryData.csproj"
+            "E:\\KH2-1920\\Framework\\Project\\Library\\LibraryData\\LibraryData.csproj": {
+              "projectPath": "E:\\KH2-1920\\Framework\\Project\\Library\\LibraryData\\LibraryData.csproj"
             },
-            "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryServices\\LibraryServices.csproj": {
-              "projectPath": "E:\\HK2-1920\\Framework\\LIBRARY\\Library\\LibraryServices\\LibraryServices.csproj"
+            "E:\\KH2-1920\\Framework\\Project\\Library\\LibraryServices\\LibraryServices.csproj": {
+              "projectPath": "E:\\KH2-1920\\Framework\\Project\\Library\\LibraryServices\\LibraryServices.csproj"
             }
           }
         }
@@ -8727,7 +8727,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

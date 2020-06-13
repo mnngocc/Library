@@ -34,7 +34,6 @@
     <Folder Include="Areas\GeneralUser\Models\" />
     <Folder Include="Areas\GeneralUser\Views\" />
     <Folder Include="wwwroot\images\branch\" />
-    <Folder Include="wwwroot\images\assets\" />
   </ItemGroup>
 
   <ItemGroup>

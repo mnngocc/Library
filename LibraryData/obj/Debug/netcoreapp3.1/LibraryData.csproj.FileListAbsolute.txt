@@ -34,3 +34,15 @@ E:\HK2-1920\Framework\LIBRARY\Library\LibraryData\obj\Debug\netcoreapp3.1\Librar
 E:\HK2-1920\Framework\LIBRARY\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.pdb
 E:\HK2-1920\Framework\LIBRARY\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.genruntimeconfig.cache
 E:\HK2-1920\Framework\LIBRARY\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.csprojAssemblyReference.cache
+E:\KH2-1920\Framework\Project\Library\LibraryData\bin\Debug\netcoreapp3.1\LibraryData.deps.json
+E:\KH2-1920\Framework\Project\Library\LibraryData\bin\Debug\netcoreapp3.1\LibraryData.runtimeconfig.json
+E:\KH2-1920\Framework\Project\Library\LibraryData\bin\Debug\netcoreapp3.1\LibraryData.runtimeconfig.dev.json
+E:\KH2-1920\Framework\Project\Library\LibraryData\bin\Debug\netcoreapp3.1\LibraryData.dll
+E:\KH2-1920\Framework\Project\Library\LibraryData\bin\Debug\netcoreapp3.1\LibraryData.pdb
+E:\KH2-1920\Framework\Project\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.csprojAssemblyReference.cache
+E:\KH2-1920\Framework\Project\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.AssemblyInfoInputs.cache
+E:\KH2-1920\Framework\Project\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.AssemblyInfo.cs
+E:\KH2-1920\Framework\Project\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.csproj.CoreCompileInputs.cache
+E:\KH2-1920\Framework\Project\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.dll
+E:\KH2-1920\Framework\Project\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.pdb
+E:\KH2-1920\Framework\Project\Library\LibraryData\obj\Debug\netcoreapp3.1\LibraryData.genruntimeconfig.cache
