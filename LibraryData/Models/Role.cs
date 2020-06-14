@@ -9,7 +9,7 @@ namespace Library.Data.Models
     {
         public int RoleID { get; set; }
         [Required]  public string RoleName { get; set; }
-        public virtual IEnumerable<User> Users { get; set; }
+        public virtual IEnumerable<Patron> Patrons { get; set; }
 
     }
 }

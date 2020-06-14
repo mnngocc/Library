@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LibraryData.Migrations
 {
-    public partial class Initialmigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -89,61 +89,6 @@ namespace LibraryData.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    Username = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false),
-                    RoleID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Username);
-                    table.ForeignKey(
-                        name: "FK_User_Role_RoleID",
-                        column: x => x.RoleID,
-                        principalTable: "Role",
-                        principalColumn: "RoleID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LibraryAssets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: false),
-                    Year = table.Column<int>(nullable: false),
-                    StatusId = table.Column<int>(nullable: false),
-                    Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    NumberOfCopies = table.Column<int>(nullable: false),
-                    LocationId = table.Column<int>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false),
-                    ISBN = table.Column<string>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
-                    DeweyIndex = table.Column<string>(nullable: true),
-                    Director = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LibraryAssets", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_LibraryAssets_LibraryBranches_LocationId",
-                        column: x => x.LocationId,
-                        principalTable: "LibraryBranches",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_LibraryAssets_Statuses_StatusId",
-                        column: x => x.StatusId,
-                        principalTable: "Statuses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Patrons",
                 columns: table => new
                 {
@@ -156,6 +101,8 @@ namespace LibraryData.Migrations
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     TelephoneNumber = table.Column<string>(nullable: true),
                     Username = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    RoleID = table.Column<int>(nullable: true),
                     LibraryCardId = table.Column<int>(nullable: true),
                     HomeLibraryBranchId = table.Column<int>(nullable: true)
                 },
@@ -175,11 +122,47 @@ namespace LibraryData.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Patrons_User_Username",
-                        column: x => x.Username,
-                        principalTable: "User",
-                        principalColumn: "Username",
+                        name: "FK_Patrons_Role_RoleID",
+                        column: x => x.RoleID,
+                        principalTable: "Role",
+                        principalColumn: "RoleID",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LibraryAssets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: false),
+                    Year = table.Column<int>(nullable: false),
+                    StatusId = table.Column<int>(nullable: false),
+                    LocationId = table.Column<int>(nullable: false),
+                    Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    NumberOfCopies = table.Column<int>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false),
+                    ISBN = table.Column<string>(nullable: true),
+                    Author = table.Column<string>(nullable: true),
+                    DeweyIndex = table.Column<string>(nullable: true),
+                    Director = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LibraryAssets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LibraryAssets_LibraryBranches_LocationId",
+                        column: x => x.LocationId,
+                        principalTable: "LibraryBranches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LibraryAssets_Statuses_StatusId",
+                        column: x => x.StatusId,
+                        principalTable: "Statuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -321,13 +304,8 @@ namespace LibraryData.Migrations
                 column: "LibraryCardId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Patrons_Username",
+                name: "IX_Patrons_RoleID",
                 table: "Patrons",
-                column: "Username");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_RoleID",
-                table: "User",
                 column: "RoleID");
         }
 
@@ -355,16 +333,13 @@ namespace LibraryData.Migrations
                 name: "LibraryCards");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Role");
 
             migrationBuilder.DropTable(
                 name: "LibraryBranches");
 
             migrationBuilder.DropTable(
                 name: "Statuses");
-
-            migrationBuilder.DropTable(
-                name: "Role");
         }
     }
 }

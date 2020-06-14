@@ -23,6 +23,14 @@ namespace LibraryServices
             _context.SaveChanges();
         }
 
+        public bool Authorize(string username, string password)
+        {
+            //throw new NotImplementedException();
+            var details = _context.Patrons.Where(p => p.Username == username && p.Password == password).FirstOrDefault();
+            if (details != null) return true;
+            else return false;
+        }
+
         public Patron Get(int id)
         {
             return _context.Patrons

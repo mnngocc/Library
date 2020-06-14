@@ -16,6 +16,9 @@ namespace Library.Models.Patron
         public string HomeLibrary { get; set; }
         public decimal? OverdueFees { get; set; }
         public string Username { get; set; }
+        public string Password { get; set; }
+        
+        public IEnumerable<Role> Role { get; set; }
         public IEnumerable<Checkout> AssetsCheckedOut { get; set; }
         public IEnumerable<CheckoutHistory> CheckoutHistory { get; set; }
         public IEnumerable<Hold> Holds { get; set; }

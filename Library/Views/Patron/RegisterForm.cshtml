@@ -2,7 +2,6 @@
     ViewBag.Title = "LIBRARY";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model Library.Data.Models.User
 <style>
     .signup {
         margin-bottom: 150px;
@@ -33,6 +32,7 @@
         margin-bottom: 50px;
         text-align: center;
     }
+
     input {
         width: 100%;
         display: block;
@@ -42,6 +42,7 @@
         font-family: Poppins;
         box-sizing: border-box;
     }
+
     .form-submit {
         display: inline-block;
         background: #6dabe4;
@@ -52,43 +53,48 @@
         border-radius: 5px;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
-
         margin-top: 25px;
         cursor: pointer;
     }
-
 </style>
-<section class="sign-in">
-    <div class="signin-content">
+<section class="sign-up">
+    <div class="signup-content">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="signin-image" style="padding-top: 100px">
-                        <figure><img src="~/Assets/register/images/signin-image.jpg" alt="sing up image"></figure>
-                        <a  asp-controller="Register" asp-action="RegisterForm" class="signup-image-link">Doesn't have account? <br /> Create an account!</a>
-                    </div>
-                </div>
+
                 <div class="col-md-6">
                     <div class="signin-form" style="padding-top: 100px">
-                        <h2 class="form-title">Login</h2>
-                        <form method="POST" class="register-form" id="login-form" asp-controller="Register" asp-action="SubmitLogin">
+                        <h2 class="form-title">Register</h2>
+                        <form method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" value="" asp-for="Username" Name="Username"  placeholder="Your Name" required/>
+                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="your_name" id="your_name" placeholder="Username" />
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" value="" asp-for="Password" Name="Password"  id="your_pass" placeholder="Password" required />
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" />
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Confirm Password" />
                             </div>
 
-                          
                             <div class="form-group form-button">
-
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
-
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Submit" />
                             </div>
                         </form>
-                       
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="signin-image" style="padding-top: 100px">
+
+                        <figure><img src="~/Assets/register/images/library-png-2.png" style="width: 320px; height: 390px" alt="sing up image"></figure>
+                        <a asp-controller="Patron" asp-action="Login" class="signup-image-link">I am already member!</a>
                     </div>
                 </div>
             </div>

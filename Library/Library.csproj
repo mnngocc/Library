@@ -6,9 +6,13 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Admin\Data\**" />
+    <Compile Remove="Areas\GeneralUser\**" />
     <Content Remove="Areas\Admin\Data\**" />
+    <Content Remove="Areas\GeneralUser\**" />
     <EmbeddedResource Remove="Areas\Admin\Data\**" />
+    <EmbeddedResource Remove="Areas\GeneralUser\**" />
     <None Remove="Areas\Admin\Data\**" />
+    <None Remove="Areas\GeneralUser\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,10 +33,6 @@
   <ItemGroup>
     <Folder Include="Areas\Employee\Data\" />
     <Folder Include="Areas\Employee\Models\" />
-    <Folder Include="Areas\GeneralUser\Controllers\" />
-    <Folder Include="Areas\GeneralUser\Data\" />
-    <Folder Include="Areas\GeneralUser\Models\" />
-    <Folder Include="Areas\GeneralUser\Views\" />
     <Folder Include="wwwroot\images\branch\" />
   </ItemGroup>
 

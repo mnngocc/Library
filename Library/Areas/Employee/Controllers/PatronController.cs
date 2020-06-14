@@ -10,11 +10,11 @@ namespace Library.Controllers
 {
     [Area("Employee")]
    
-    public class PatronController : Controller
+    public class PatronsController : Controller
     {
         private readonly IPatron _patronService;
 
-        public PatronController(IPatron patronService)
+        public PatronsController(IPatron patronService)
         {
             _patronService = patronService;
         }
