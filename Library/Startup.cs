@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Library.Data;
 using Library.Data.Models;
 using LibraryData;
+using LibraryData.Models;
 using LibraryServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,7 @@ namespace Library
             services.AddScoped<IStatus, StatusService>();
             services.AddScoped<ILibraryBranchService, LibraryBranchService>();
             services.AddScoped<IPatron, PatronService>();
+            services.AddScoped<IUser, UserService>();
 
             services.AddDbContext<LibraryDbContext>(options
                   => options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));

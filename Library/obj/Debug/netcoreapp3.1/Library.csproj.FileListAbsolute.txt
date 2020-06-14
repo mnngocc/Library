@@ -691,3 +691,5 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\staticweba
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.dll
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.pdb
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.genruntimeconfig.cache
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Register\Login.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Register\RegisterForm.cshtml.g.cs
