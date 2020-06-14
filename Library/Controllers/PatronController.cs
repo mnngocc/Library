@@ -14,10 +14,12 @@ namespace Library.Controllers
     public class PatronController : Controller
     {
         private readonly IPatron _patronService;
+        public string _username;
 
         public PatronController(IPatron patronService)
         {
             _patronService = patronService;
+          
         }
 
         public IActionResult Index()
@@ -34,9 +36,12 @@ namespace Library.Controllers
         public IActionResult SubmitLogin(Patron patron)
         {         
             bool result = _patronService.Authorize(patron.Username, patron.Password);
+            var patron_id = _patronService.GetByUsername(patron.Username);
             if (result)
             {
                 HttpContext.Session.SetString("username", patron.Username);
+                HttpContext.Session.SetInt32("id", patron_id.Id);
+
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -45,6 +50,33 @@ namespace Library.Controllers
                 return View( "Login");
             }                
             
+        }
+       
+        public IActionResult Profile(int id)
+        {
+        
+            string msg = "";
+            var patron = _patronService.Get(id);
+            msg += id;
+            var model = new PatronDetailModel
+            {
+                Username = patron.Username,
+                Id = patron.Id,
+                LastName = patron.LastName ?? "No Last Name Provided",
+                FirstName = patron.FirstName ?? "No First Name Provided",
+                Address = patron.Address ?? "No Address Provided",
+                HomeLibrary = patron.HomeLibraryBranch?.Name ?? "No Home Library",
+                MemberSince = patron.LibraryCard?.Created,
+                OverdueFees = patron.LibraryCard?.Fees,
+                LibraryCardId = patron.LibraryCard?.Id,
+                Telephone = string.IsNullOrEmpty(patron.TelephoneNumber) ? "No Telephone Number Provided" : patron.TelephoneNumber,
+                AssetsCheckedOut = _patronService.GetCheckouts(id).ToList(),
+                CheckoutHistory = _patronService.GetCheckoutHistory(id),
+                Holds = _patronService.GetHolds(id)
+
+            };
+            //return Content(msg);
+            return View(model);
         }
         [HttpGet]
         public IActionResult Logout()

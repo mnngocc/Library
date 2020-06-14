@@ -694,3 +694,4 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.ge
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Index.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Login.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\RegisterForm.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Profile.cshtml.g.cs

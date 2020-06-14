@@ -38,6 +38,13 @@ namespace LibraryServices
                 .Include(a => a.HomeLibraryBranch)
                 .FirstOrDefault(p => p.Id == id);
         }
+        public Patron GetByUsername(string username)
+        {
+            return _context.Patrons
+               .Include(a => a.LibraryCard)
+               .Include(a => a.HomeLibraryBranch)
+               .FirstOrDefault(p => p.Username == username);
+        }
 
         public IEnumerable<Patron> GetAll()
         {
@@ -69,6 +76,15 @@ namespace LibraryServices
                 .Where(v => v.LibraryCard.Id == patronCardId);
         }
 
+        public IEnumerable<Checkout> GetCheckoutsByUsername(string username)
+        {
+            var patronCardId = GetByUsername(username).LibraryCard.Id;
+            return _context.Checkouts
+                .Include(a => a.LibraryCard)
+                .Include(a => a.LibraryAsset)
+                .Where(v => v.LibraryCard.Id == patronCardId);
+        }
+
         public IEnumerable<Hold> GetHolds(int patronId)
         {
             var cardId = _context.Patrons
@@ -81,6 +97,34 @@ namespace LibraryServices
                 .Include(a => a.LibraryAsset)
                 .Where(a => a.LibraryCard.Id == cardId)
                 .OrderByDescending(a => a.HoldPlaced);
+        }
+
+        public IEnumerable<Hold> GetHoldsByUsername(string username)
+        {
+            var cardId = _context.Patrons
+               .Include(a => a.LibraryCard)
+               .FirstOrDefault(a => a.Username == username)?
+               .LibraryCard.Id;
+
+            return _context.Holds
+                .Include(a => a.LibraryCard)
+                .Include(a => a.LibraryAsset)
+                .Where(a => a.LibraryCard.Id == cardId)
+                .OrderByDescending(a => a.HoldPlaced);
+        }
+
+        public IEnumerable<CheckoutHistory> GetCheckoutsHistoryByUsername(string username)
+        {
+            var cardId = _context.Patrons
+                .Include(a => a.LibraryCard)
+                .FirstOrDefault(a => a.Username == username)?
+                .LibraryCard.Id;
+
+            return _context.CheckoutHistories
+                .Include(a => a.LibraryCard)
+                .Include(a => a.LibraryAsset)
+                .Where(a => a.LibraryCard.Id == cardId)
+                .OrderByDescending(a => a.CheckedOut);
         }
     }
 }

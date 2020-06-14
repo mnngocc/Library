@@ -9,10 +9,15 @@ namespace LibraryData
     {
         IEnumerable<Patron> GetAll();
         Patron Get(int id);
+        Patron GetByUsername(string username);
         void Add(Patron newPatron);
         bool Authorize(string username, string password);
         IEnumerable<CheckoutHistory> GetCheckoutHistory(int patronId);
         IEnumerable<Hold> GetHolds(int patronId);
         IEnumerable<Checkout> GetCheckouts(int id);
+
+        IEnumerable<Checkout> GetCheckoutsByUsername(string username);
+        IEnumerable<Hold> GetHoldsByUsername(string username);
+        IEnumerable<CheckoutHistory> GetCheckoutsHistoryByUsername(string username);
     }
 }
