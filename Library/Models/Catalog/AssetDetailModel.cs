@@ -22,6 +22,7 @@ namespace Library.Models.Catalog
         public string ImageUrl { get; set; }
         public string PatronName { get; set; }
         public bool CheckHoldExist { get; set; }
+        public bool IsLogin { get; set; }
         public Checkout LatestCheckout { get; set; }
         public LibraryCard CurrentAssociatedLibraryCard { get; set; }
         public IEnumerable<CheckoutHistory> CheckoutHistory { get; set; }

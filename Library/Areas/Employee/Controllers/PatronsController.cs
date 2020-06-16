@@ -21,7 +21,7 @@ namespace Library.Areas.Employee.Controllers
 
         public IActionResult Index()
         {
-            var allPatrons = _patronService.GetAll();
+            var allPatrons = _patronService.GetAllPatrons();
 
             var patronModels = allPatrons
                 .Select(p => new PatronDetailModel

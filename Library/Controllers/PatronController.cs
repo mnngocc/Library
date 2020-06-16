@@ -38,9 +38,10 @@ namespace Library.Controllers
         {         
             bool result = _patronService.Authorize(patron.Username, patron.Password);
             var patron_id = _patronService.GetByUsername(patron.Username);
-           
+          
             if (result)
             {
+               
                 HttpContext.Session.SetString("username", patron.Username);
                 HttpContext.Session.SetInt32("id", patron_id.Id);
                 HttpContext.Session.SetInt32("LibraryCard", patron_id.LibraryCard.Id);

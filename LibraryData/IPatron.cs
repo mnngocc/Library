@@ -8,6 +8,7 @@ namespace LibraryData
     public interface IPatron
     {
         IEnumerable<Patron> GetAll();
+        IEnumerable<Patron> GetAllPatrons();
         Patron Get(int id);
         Patron GetByUsername(string username);
         void Add(Patron newPatron);

@@ -50,6 +50,7 @@ namespace Library
 
             services.AddMvc()
                     .AddSessionStateTempDataProvider();
+            services.AddDistributedMemoryCache();
             services.AddSession();
 
         }

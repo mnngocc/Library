@@ -15,6 +15,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div>
+                    <p style="color: red" class="animated fadeIn">@ViewBag.error</p>
                     <p id="itemTitle">@Model.Title</p>
                     <img class="detailImage" src="@Model.ImageUrl" />
                 </div>
@@ -24,13 +25,15 @@
             @*you could also use tag helpers.*@
             <div class="col-md-9">
                 <p>There are currently @Model.HoldCount holds in the queue for this item.</p>
+
+                
                 @*this is an html helper - it creates an object that implements idisposable*@
                 @using (Html.BeginForm("PlaceHold", "Catalog", FormMethod.Post))
                 {
                     @Html.HiddenFor(a => a.AssetId)
                     <div>
                         <strong>Please insert a Library Card ID.</strong>
-                        
+
                         @Html.TextBoxFor(a => a.LibraryCardId)
                         @*write out a text box and set attributes according to info in the model*@
                     </div>

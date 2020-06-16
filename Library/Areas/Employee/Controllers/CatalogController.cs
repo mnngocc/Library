@@ -48,6 +48,7 @@ namespace Library.Areas.Employee.Controllers
         public IActionResult Detail(int id)
         {
             var asset = _assets.GetById(id);
+            
             var currentHolds = _checkouts.GetCurrentHold(id)
                 .Select(a => new AssetHoldModel
                 { 
@@ -145,6 +146,25 @@ namespace Library.Areas.Employee.Controllers
         [HttpPost]
         public IActionResult PlaceHold(int assetId, int libraryCardId)
         {
+            string msg = "";
+            if (_checkouts.CheckHoldExist(assetId, libraryCardId) || _checkouts.CheckLibraryCardId(libraryCardId))
+            {
+                ViewBag.error = "Invalid";
+                msg += "invalid";
+                var asset = _assets.Get(assetId);
+
+                var model = new CheckoutModel
+                {
+                    AssetId = assetId,
+                    ImageUrl = asset.ImageUrl,
+                    Title = asset.Title,
+                    LibraryCardId = "",
+                    HoldCount = _checkouts.GetCurrentHold(assetId).Count()
+                };
+                return View("Hold",model);
+                //return View("Hold",  assetId );
+               // return Content(msg);
+            }    
             _checkouts.PlaceHold(assetId, libraryCardId);
             return RedirectToAction("Detail", new { id = assetId });
         }

@@ -40,13 +40,15 @@
                             <p style="color:green"><strong>Available for Checking Out</strong></p>
                         }
 
-                        @if ((@Model.Status == "Checked Out" || @Model.Status == "On Hold") && Model.CheckHoldExist != true)
+                        @if ((@Model.Status == "Checked Out" || @Model.Status == "On Hold") && Model.CheckHoldExist != true && Model.IsLogin == true)
                         {
 
                             <p><a class="btn btn-lg btn-warning" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.AssetId">Place Hold</a></p>
                         }
-             
-
+                        if (Model.CheckHoldExist == true && Model.IsLogin == true)
+                        {
+                            <strong style="color: red">You have been HOLD/CHECKED OUT this item </strong>
+                        }
 
                     }
 

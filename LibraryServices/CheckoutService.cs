@@ -277,6 +277,8 @@ namespace LibraryServices
             //throw new NotImplementedException();
         }
 
+
+
         public void PlaceHold(int assetId, int libraryCardId)
         {
             var asset = _context.LibraryAssets
@@ -320,7 +322,11 @@ namespace LibraryServices
                 .Include(a => a.LibraryAsset)
                 .Include(a => a.LibraryCard)
                 .Where(a => a.LibraryAsset.Id == assetId && a.LibraryCard.Id == libCard).FirstOrDefault();
-            if (currentHolds != null)
+            var historyCheckout = _context.CheckoutHistories
+                .Include(a => a.LibraryAsset)
+                .Include(a => a.LibraryCard)
+                .Where(a => a.LibraryAsset.Id == assetId && a.LibraryCard.Id == libCard && a.CheckedIn == null).FirstOrDefault();
+            if (currentHolds != null || historyCheckout != null)
                 return true;
             else return false;
         }
@@ -344,6 +350,16 @@ namespace LibraryServices
                 CheckoutToEarliestHold(id, currentHolds);           
                 return;
             }
+        }
+
+        public bool CheckLibraryCardId(int id)
+        {
+           // throw new NotImplementedException();
+            var item = _context.LibraryCards              
+               .Where(a => a.Id == id).FirstOrDefault();
+            if (item == null) return true;
+            else return false;
+
         }
     }
 }

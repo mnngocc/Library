@@ -45,7 +45,14 @@ namespace Library.Controllers
         public IActionResult Detail(int id)
         {
             //HttpContext.Session.SetInt32("LibraryCard",
-            int libCard = (int)HttpContext.Session.GetInt32("LibraryCard");
+            int libCard = 0;
+            bool isLogin = false;
+            if (HttpContext.Session.GetString("username") != null)
+            {
+                 libCard = (int)HttpContext.Session.GetInt32("LibraryCard");
+                isLogin = true;
+            }
+
             var asset = _assets.GetById(id);
             var currentHolds = _checkouts.GetCurrentHold(id)
                 .Select(a => new AssetHoldModel
@@ -71,12 +78,14 @@ namespace Library.Controllers
                 LatestCheckout = _checkouts.GetLatestCheckout(id),
                 PatronName = _checkouts.GetCurrentPatron(id),
                 CheckHoldExist = _checkouts.CheckHoldExist(id, libCard),
-                CurrentHolds = currentHolds
+                CurrentHolds = currentHolds,
+                IsLogin = isLogin
             };
-           // string msg = "";
+            string msg = "";
+            msg += _checkouts.CheckHoldExist(id,libCard);
             return View(model);
             //msg += libCard;
-           // return Content(msg);
+            //return Content(msg);
         }
 
         public IActionResult Hold(int id) //Giu sach

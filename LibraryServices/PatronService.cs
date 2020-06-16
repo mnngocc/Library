@@ -126,5 +126,14 @@ namespace LibraryServices
                 .Where(a => a.LibraryCard.Id == cardId)
                 .OrderByDescending(a => a.CheckedOut);
         }
+
+        public IEnumerable<Patron> GetAllPatrons()
+        {
+            return _context.Patrons
+               .Include(a => a.LibraryCard)
+               .Include(a => a.HomeLibraryBranch)
+               .Include(a => a.Role)
+               .Where(a => a.Role.RoleID == 3);
+        }
     }
 }
