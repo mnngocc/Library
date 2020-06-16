@@ -53,7 +53,8 @@ namespace Library.Areas.Employee.Controllers
                 .Select(a => new AssetHoldModel
                 { 
                     HoldPlaced = _checkouts.GetCurrentHoldPlaced(a.Id).ToString(),
-                    PatronName = _checkouts.GetCurrentHoldPatron(a.Id)
+                    PatronName = _checkouts.GetCurrentHoldPatron(a.Id),
+                   
                 });
             var model = new AssetDetailModel
             {
@@ -71,7 +72,7 @@ namespace Library.Areas.Employee.Controllers
                 CheckoutHistory = _checkouts.GetCheckoutHistory(id),
                 CurrentAssociatedLibraryCard = _assets.GetLibraryCardByAssetId(id),
                 LatestCheckout = _checkouts.GetLatestCheckout(id),
-                PatronName = _checkouts.GetCurrentPatron(id),
+                PatronName = _checkouts.GetCurrentPatron(id),                
                 CurrentHolds = currentHolds             
             };
             return View(model);

@@ -20,7 +20,7 @@ namespace Library.Models.Catalog
         public decimal Cost { get; set; }
         public string CurrentLocation { get; set; }
         public string ImageUrl { get; set; }
-        public string PatronName { get; set; }
+        public string PatronName { get; set; }       
         public bool CheckHoldExist { get; set; }
         public bool IsLogin { get; set; }
         public Checkout LatestCheckout { get; set; }
@@ -33,5 +33,6 @@ namespace Library.Models.Catalog
     {
         public string PatronName { get; set; }
         public string HoldPlaced { get; set; }
+       
     }
 }

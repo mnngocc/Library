@@ -8,10 +8,6 @@
 
 
     <div class="container">
-        <div class="header clearfix detailHeading">
-            <h2 class="text-muted">View Library Item</h2>
-        </div>
-
         <div class="jumbotron">
             <div class="row">
                 <div class="col-md-4">
@@ -130,14 +126,15 @@
 
                         @foreach (var hold in @Model.CurrentHolds)
                         {
-                            <tr>
-                                <td>
-                                    @hold.HoldPlaced
-                                </td>
-                                <td>
-                                    @hold.PatronName
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @hold.HoldPlaced
+                            </td>
+                            <td>
+                                @hold.PatronName
+                            </td>
+                           
+                        </tr>
                         }
 
                     </tbody>

@@ -7,18 +7,18 @@
 
 
 <div class="container">
-    <div class="header clearfix detailHeading">
-        <h2 class="text-muted">Branch Information</h2>
-    </div>
+    
     <div class="jumbotron">
         <div class="row">
-            <img src="@Model.ImageUrl"style="max-width:1000px" />
+            <img src="@Model.ImageUrl" style="max-width:300px; max-height: 450px" />
+        </div>
+        <div class="row">
+            <h2>@Model.BranchName</h2>
         </div>
         <div class="row branchInfo">
             <div class="col-md-8">
                 <div>
-                    <h2>@Model.BranchName</h2>
-                    
+
                     <div class="branchContact">
                         <div id="branchAddress">Address: @Model.Address</div>
                         <div id="branchTel">Telephone: @Model.Telephone</div>
@@ -40,20 +40,20 @@
             <div class="col-md-4 detailInfo">
                 <table>
                     <tr>
-                       <td class="itemLabel">Date Opened: </td>
-                       <td class="itemValue">@Model.BranchOpenedDate</td>
+                        <td class="itemLabel">Date Opened: </td>
+                        <td class="itemValue">@Model.BranchOpenedDate</td>
                     </tr>
                     <tr>
-                       <td class="itemLabel">Number Of Patrons: </td>
-                       <td class="itemValue">@Model.NumberOfPatrons</td>
+                        <td class="itemLabel">Number Of Patrons: </td>
+                        <td class="itemValue">@Model.NumberOfPatrons</td>
                     </tr>
                     <tr>
-                       <td class="itemLabel">Number of Assets: </td>
-                       <td class="itemValue">@Model.NumberOfAssets</td>
+                        <td class="itemLabel">Number of Assets: </td>
+                        <td class="itemValue">@Model.NumberOfAssets</td>
                     </tr>
                     <tr>
-                       <td class="itemLabel">Value of Assets: </td>
-                       <td class="itemValue">$@Model.TotalAssetValue</td>
+                        <td class="itemLabel">Value of Assets: </td>
+                        <td class="itemValue">$@Model.TotalAssetValue</td>
                     </tr>
                 </table>
             </div>

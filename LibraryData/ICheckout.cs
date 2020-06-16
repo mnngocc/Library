@@ -15,6 +15,7 @@ namespace LibraryData
         bool CheckLibraryCardId(int id);
         IEnumerable<CheckoutHistory> GetCheckoutHistory(int id);
         IEnumerable<Hold> GetCurrentHold(int id);
+     
         void PlaceHold(int assetId, int libraryCardId);
         public void CheckoutToEarliestHold(int id);
         Checkout GetLatestCheckout(int assetId);
@@ -22,7 +23,7 @@ namespace LibraryData
         public string GetCurrentHoldPatron(int id);
         public string GetCurrentPatron(int id);
         string GetCurrentHoldPlaced(int id);
-
+      
         bool CheckHoldExist(int assetId, int libCard);
 
         void MarkLost(int id);

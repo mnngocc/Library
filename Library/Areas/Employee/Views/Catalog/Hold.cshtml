@@ -5,12 +5,8 @@
     Layout = "~/Areas/Employee/Views/Shared/_Layout.cshtml";
 }
 @*@model is the model directive*@
-<h2>Hold</h2>
+<h2>Hold Item</h2>
 <div class="container">
-    <div class="header clearfix detailHeading">
-        <h2 class="text-muted">Place Hold on Library Item</h2>
-    </div>
-
     <div class="jumbotron">
         <div class="row">
             <div class="col-md-8">
@@ -24,7 +20,7 @@
         <div class="row">
             @*you could also use tag helpers.*@
             <div class="col-md-9">
-                <p>There are currently @Model.HoldCount holds in the queue for this item.</p>
+                <p>There are currently <span style="color:brown; font-weight:bold"> @Model.HoldCount holds </span> in the queue for this item.</p>
 
                 
                 @*this is an html helper - it creates an object that implements idisposable*@

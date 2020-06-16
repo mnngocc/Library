@@ -1,51 +1,124 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" />
-    
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" stype="style/css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>Employee</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/Assets/admin/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/Assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/Assets/admin/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="/Assets/admin/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="/Assets/admin/lineicons/style.css">
+
+    <!-- Custom styles for this template -->
+    <link href="/Assets/admin/css/style.css" rel="stylesheet">
+    <link href="/Assets/admin/css/style-responsive.css" rel="stylesheet">
+
+    <script src="/Assets/admin/js/chart-master/Chart.js"></script>
+    <style>
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+
     <link rel="stylesheet" href="~/css/styles.css" />
 </head>
 
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="custom-header mdl-layout__header mdl-layout__header--waterfall">
-            <div class="mdl-layout__header-row">
-                <!-- Title -->
-                <span class="mdl-layout-title logo"><a href="/Employee/Home/Index">Library Management</a></span>
-                <!-- Add spacer, to align navigation to the right -->
-                <div class="mdl-layout-spacer"></div>
-                <!-- Navigation. We hide it in small screens. -->
-                <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link"  asp-controller="Home" asp-action="Index">Home</a>
-                   
-                    <a class="mdl-navigation__link" asp-controller="Patron" asp-action="Index">Patrons</a>
-                    <a class="mdl-navigation__link" asp-controller="Branch" asp-action="Index">Branches</a>
-                </nav>
+    <section id="container">
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a asp-controller="Home" asp-action="Index" class="logo"><b>EMPLOYEE</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <!-- inbox dropdown end -->
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Logout</a></li>
+                </ul>
             </div>
         </header>
-        <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">LightLib</span>
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link"  asp-controller="Home" asp-action="Index">Home</a>
-                <a class="mdl-navigation__link"  asp-controller="Catalog" asp-action="Index">Catalog</a>
-                <a class="mdl-navigation__link" asp-controller="Patron" asp-action="Index">Patrons</a>
-                <a class="mdl-navigation__link" asp-controller="Branch" asp-action="Index">Branches</a>
-            </nav>
-        </div>
-        <div class="page-content">
-            @RenderBody()
-        </div>
-    </div>
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <h5 class="centered">ADMIN</h5>
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
 
-    @RenderSection("Styles", required: false)
-    @RenderSection("Scripts", required: false)
-    <script src="https://use.fontawesome.com/6110b02b27.js"></script>
+                    <li class="mt">
+                        <a asp-controller="Home" asp-action="Index">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Catalog</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a asp-controller="Patron" asp-action="Index">
+                            <i class="fa fa-cogs"></i>
+                            <span>Patrons</span>
+                        </a>
+
+                    </li>
+                    <li class="sub-menu">
+                        <a asp-controller="Branch" asp-action="Index">
+                            <i class="fa fa-book"></i>
+                            <span>Branches</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <section id="main-content">
+            <section class="wrapper">
+                @RenderBody()
+
+            </section>
+            <footer class="site-footer" style="bottom:0;  right:0; left:0">
+                <div class="text-center">
+                    Nhóm thực hiện: Mai Như Ngọc - Nguyễn Phi Yến - Trần Hữu Phát - Nguyễn Hữu Phước
+                </div>
+            </footer>
+        </section>
+    </section>
+
+        @RenderSection("Styles", required: false)
+        @RenderSection("Scripts", required: false)
+        <script src="https://use.fontawesome.com/6110b02b27.js"></script>
+        <script src="/Assets/admin/js/jquery.js"></script>
+        <script src="/Assets/admin/js/jquery-1.8.3.min.js"></script>
+        <script src="/Assets/admin/js/bootstrap.min.js"></script>
+        <script class="include" type="text/javascript" src="/Assets/admin/js/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="/Assets/admin/js/jquery.scrollTo.min.js"></script>
+        <script src="/Assets/admin/js/jquery.nicescroll.js" type="text/javascript"></script>
+        <script src="/Assets/admin/js/jquery.sparkline.js"></script>
+
+
+        <!--common script for all pages-->
+        <script src="/Assets/admin/js/common-scripts.js"></script>
+
+        <script type="text/javascript" src="/Assets/admin/js/gritter/js/jquery.gritter.js"></script>
+        <script type="text/javascript" src="/Assets/admin/js/gritter-conf.js"></script>
+
+        <!--script for this page-->
+        <script src="/Assets/admin/js/sparkline-chart.js"></script>
+        <script src="/Assets/admin/js/zabuto_calendar.js"></script>
 </body>
 </html>

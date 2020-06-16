@@ -206,6 +206,7 @@ namespace LibraryServices
 
             return patron.FirstName + " " + patron.LastName;
         }
+    
 
         public Checkout GetLatestCheckout(int assetId)
         {
@@ -361,5 +362,7 @@ namespace LibraryServices
             else return false;
 
         }
+
+       
     }
 }

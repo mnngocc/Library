@@ -660,7 +660,6 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Area
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Statuses\ListStatus.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Branch\Detail.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Branch\Index.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Branch\View.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Catalog\Checkout.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Catalog\Detail.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Catalog\Hold.cshtml.g.cs
