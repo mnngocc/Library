@@ -6,15 +6,15 @@ using Library.Models.Patron;
 using LibraryData;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Library.Controllers
+namespace Library.Areas.Employee.Controllers
 {
     [Area("Employee")]
    
-    public class PatronsController : Controller
+    public class PatronController : Controller
     {
         private readonly IPatron _patronService;
 
-        public PatronsController(IPatron patronService)
+        public PatronController(IPatron patronService)
         {
             _patronService = patronService;
         }

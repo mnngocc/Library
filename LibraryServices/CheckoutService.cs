@@ -73,15 +73,19 @@ namespace LibraryServices
             // if there are current holds, check out the item to the earliest
             if (currentHolds.Any())
             {
-                CheckoutToEarliestHold(id, currentHolds);
+                //CheckoutToEarliestHold(id, currentHolds);
+                item.Status = _context.Statuses.FirstOrDefault(a => a.Name == "On Hold");
+                _context.SaveChanges();
                 return;
             }
 
             // otherwise, set item status to available
             item.Status = _context.Statuses.FirstOrDefault(a => a.Name == "Available");
-
             _context.SaveChanges();
+
         }
+
+
         private DateTime GetDefaultCheckoutTime(DateTime now)
         {
             return now.AddDays(30);
@@ -217,23 +221,46 @@ namespace LibraryServices
             var now = DateTime.Now;
             var item = _context.LibraryAssets.FirstOrDefault(a => a.Id == id);
             _context.Update(item);
-            item.Status = _context.Statuses.FirstOrDefault(stt => stt.Name == "Available");
-
-            //Remove  các checkout 
             var checkout = _context.Checkouts
                             .FirstOrDefault(co => co.LibraryAsset.Id == id);
-            if (checkout != null)
-            {
-                _context.Remove(checkout);
-            }
 
             //Remove lich su checkout
-            var history = _context.CheckoutHistories.FirstOrDefault(h => h.LibraryAsset.Id == id 
+            var history = _context.CheckoutHistories.FirstOrDefault(h => h.LibraryAsset.Id == id
                                                                 && h.CheckedIn == null);
-                if (history != null)
+            if (history != null)
             {
                 _context.Update(history);
                 history.CheckedIn = now;
+            }
+
+            var currentHolds = _context.Holds
+                .Include(a => a.LibraryAsset)
+                .Include(a => a.LibraryCard)
+                .Where(a => a.LibraryAsset.Id == id);
+           
+            if (currentHolds.Any())
+                {
+                    item.Status = _context.Statuses.FirstOrDefault(a => a.Name == "On Hold");
+                    _context.SaveChanges();
+                    if (checkout != null)
+                    {
+                        _context.Remove(checkout);
+                    }
+
+                    _context.SaveChanges();
+                return;
+                }
+            
+            // if there are current holds, check out the item to the earliest
+            
+            item.Status = _context.Statuses.FirstOrDefault(stt => stt.Name == "Available");
+
+
+            //Remove  các checkout 
+            
+            if (checkout != null)
+            {
+                _context.Remove(checkout);
             }
 
             _context.SaveChanges();
@@ -242,6 +269,7 @@ namespace LibraryServices
 
         public void MarkLost(int id)
         {
+            
             var item = _context.LibraryAssets.FirstOrDefault(a => a.Id == id);
             _context.Update(item);
             item.Status = _context.Statuses.FirstOrDefault(stt => stt.Name == "Lost");
@@ -284,6 +312,38 @@ namespace LibraryServices
             return _context.Holds
                .Include(h => h.LibraryAsset)
                .Where(h => h.LibraryAsset.Id == id);
+        }
+
+        public bool CheckHoldExist(int assetId, int libCard)
+        {
+            var currentHolds = _context.Holds
+                .Include(a => a.LibraryAsset)
+                .Include(a => a.LibraryCard)
+                .Where(a => a.LibraryAsset.Id == assetId && a.LibraryCard.Id == libCard).FirstOrDefault();
+            if (currentHolds != null)
+                return true;
+            else return false;
+        }
+
+        public void CheckoutToEarliestHold(int id)
+        {
+            //throw new NotImplementedException();
+            var item = _context.LibraryAssets
+                .First(a => a.Id == id);
+            var now = DateTime.Now;
+            _context.Update(item);
+            // look for current holds
+            var currentHolds = _context.Holds
+                .Include(a => a.LibraryAsset)
+                .Include(a => a.LibraryCard)
+                .Where(a => a.LibraryAsset.Id == id);
+
+            // if there are current holds, check out the item to the earliest
+            if (currentHolds.Any())
+            {
+                CheckoutToEarliestHold(id, currentHolds);           
+                return;
+            }
         }
     }
 }

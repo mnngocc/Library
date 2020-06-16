@@ -122,7 +122,13 @@ namespace Library.Areas.Employee.Controllers
             return RedirectToAction("Detail", new {id});
         }
 
-       
+        public IActionResult CheckoutToEarliestHold(int id) //Thuc hien cho nguoi giu som nhat muon sach
+        {
+            _checkouts.CheckoutToEarliestHold(id);
+            return RedirectToAction("Detail", new { id });
+        }
+
+
         public IActionResult MarkFound(int id)
         {
             _checkouts.MarkFound(id);

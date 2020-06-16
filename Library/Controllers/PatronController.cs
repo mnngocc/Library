@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Library.Data.Models;
+using Library.Models.CheckoutModels;
 using Library.Models.Patron;
 using LibraryData;
 using Microsoft.AspNetCore.Http;
@@ -37,10 +38,12 @@ namespace Library.Controllers
         {         
             bool result = _patronService.Authorize(patron.Username, patron.Password);
             var patron_id = _patronService.GetByUsername(patron.Username);
+           
             if (result)
             {
                 HttpContext.Session.SetString("username", patron.Username);
                 HttpContext.Session.SetInt32("id", patron_id.Id);
+                HttpContext.Session.SetInt32("LibraryCard", patron_id.LibraryCard.Id);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -54,10 +57,10 @@ namespace Library.Controllers
        
         public IActionResult Profile(int id)
         {
-        
             string msg = "";
             var patron = _patronService.Get(id);
-            msg += id;
+           
+            msg += HttpContext.Session.GetString("username");
             var model = new PatronDetailModel
             {
                 Username = patron.Username,
@@ -75,7 +78,7 @@ namespace Library.Controllers
                 Holds = _patronService.GetHolds(id)
 
             };
-            //return Content(msg);
+           // return Content(msg);
             return View(model);
         }
         [HttpGet]
@@ -90,5 +93,7 @@ namespace Library.Controllers
             return View();
         }
 
+
+       
     }
 }

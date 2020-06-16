@@ -28,7 +28,7 @@
                     <p id="itemStatus">Status: @Model.Status</p>
                     <p id="itemType">Type: @Model.Type</p>
                     <p id="itemLocation">Last Location: @Model.CurrentLocation</p>
-                    @if (Model.Status == "Checked Out")
+                    @if (Model.Status == "Checked Out" )
                     {
                         <p id="itemPatron">Checked Out By: @Model.PatronName</p>
                     }
@@ -40,11 +40,12 @@
                             <p style="color:green"><strong>Available for Checking Out</strong></p>
                         }
 
-                        @if (@Model.Status == "Checked Out")
+                        @if ((@Model.Status == "Checked Out" || @Model.Status == "On Hold") && Model.CheckHoldExist != true)
                         {
 
                             <p><a class="btn btn-lg btn-warning" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.AssetId">Place Hold</a></p>
                         }
+             
 
 
                     }

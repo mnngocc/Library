@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Library.Models.Catalog;
+using Library.Models.CheckoutModels;
 using LibraryData;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Controllers
@@ -12,6 +14,7 @@ namespace Library.Controllers
     {
         private ILibraryAsset _assets;
         private ICheckout _checkouts;
+
         public CatalogController(ILibraryAsset assets, ICheckout checkouts)
         {
             _assets = assets;
@@ -41,6 +44,8 @@ namespace Library.Controllers
 
         public IActionResult Detail(int id)
         {
+            //HttpContext.Session.SetInt32("LibraryCard",
+            int libCard = (int)HttpContext.Session.GetInt32("LibraryCard");
             var asset = _assets.GetById(id);
             var currentHolds = _checkouts.GetCurrentHold(id)
                 .Select(a => new AssetHoldModel
@@ -65,9 +70,42 @@ namespace Library.Controllers
                 CurrentAssociatedLibraryCard = _assets.GetLibraryCardByAssetId(id),
                 LatestCheckout = _checkouts.GetLatestCheckout(id),
                 PatronName = _checkouts.GetCurrentPatron(id),
+                CheckHoldExist = _checkouts.CheckHoldExist(id, libCard),
                 CurrentHolds = currentHolds
             };
+           // string msg = "";
             return View(model);
+            //msg += libCard;
+           // return Content(msg);
+        }
+
+        public IActionResult Hold(int id) //Giu sach
+        {
+            var asset = _assets.Get(id);
+            string msg = "";
+            //HttpContext.Session.SetInt32("LibraryCard", patron_id.LibraryCard.Id);
+            msg += HttpContext.Session.GetInt32("LibraryCard");
+            //msg += HttpContext.Session.GetString("username");
+            var libCard = HttpContext.Session.GetInt32("LibraryCard");
+            var model = new CheckoutModel
+            {
+                AssetId = id,
+                ImageUrl = asset.ImageUrl,
+                Title = asset.Title,
+                LibraryCardId = libCard.ToString(),
+                HoldCount = _checkouts.GetCurrentHold(id).Count()
+            };
+
+            return View(model);
+            //return Content(msg);
+
+        }
+
+        [HttpPost]
+        public IActionResult PlaceHold(int assetId, int libraryCardId)
+        {
+            _checkouts.PlaceHold(assetId, libraryCardId);
+            return RedirectToAction("Detail", new { id = assetId });
         }
     }
 }

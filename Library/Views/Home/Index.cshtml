@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section class="home-slider owl-carousel">
+
     @foreach (var branch in Model.Branches)
     {
         <div class="slider-item" style="background-image: url('..@branch.ImageURL') ;">
@@ -30,6 +31,7 @@
             <div class="col-md-6 col-lg-4 element-animate ">
                 <div class="media block-6 d-block text-center">
                     <div class="icon mb-3"><span class="ion-bookmark text-primary"></span></div>
+                    
                     <div class="media-body">
                         <h3 class="heading">Automotive Parts</h3>
                         <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>

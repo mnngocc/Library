@@ -43,6 +43,11 @@
                             <p><a class="btn btn-lg btn-success" role="button" asp-controller="Catalog" asp-action="CheckIn" asp-route-id="@Model.AssetId">Check In</a></p>
                             <p><a class="btn btn-lg btn-warning" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.AssetId">Place Hold</a></p>
                         }
+                        @if (@Model.Status == "On Hold")
+                        {
+                            
+                            <p><a class="btn btn-lg btn-warning" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.AssetId">Place Hold</a></p>
+                        }
 
                         <p><a class="btn btn-lg btn-danger" role="button" asp-controller="Catalog" asp-action="MarkLost" asp-route-id="@Model.AssetId">Mark Item Lost</a></p>
                     }
@@ -106,14 +111,23 @@
             </div>
             <div class="col-lg-6">
                 <h4>Current Holds</h4>
+                @if (@Model.Status == "On Hold")
+                {
+                    <p><a class="btn btn-lg btn-info" role="button" asp-controller="Catalog" asp-action="CheckoutToEarliestHold" asp-route-id="@Model.AssetId">Check Out</a></p>
+
+                }
+
                 <table class="table table-bordered table-hover table-condensed">
                     <thead>
+
                         <tr>
                             <th>Hold Placed</th>
                             <th>Patron</th>
+
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach (var hold in @Model.CurrentHolds)
                         {
                             <tr>
@@ -125,6 +139,7 @@
                                 </td>
                             </tr>
                         }
+
                     </tbody>
                 </table>
             </div>
