@@ -15,7 +15,7 @@ namespace LibraryData
         bool CheckLibraryCardId(int id);
         IEnumerable<CheckoutHistory> GetCheckoutHistory(int id);
         IEnumerable<Hold> GetCurrentHold(int id);
-     
+        string GetCurrentHoldPatronPhone(int id);
         void PlaceHold(int assetId, int libraryCardId);
         public void CheckoutToEarliestHold(int id);
         Checkout GetLatestCheckout(int assetId);

@@ -33,6 +33,6 @@ namespace Library.Models.Catalog
     {
         public string PatronName { get; set; }
         public string HoldPlaced { get; set; }
-       
+        public string PatronPhone { get; set; }
     }
 }

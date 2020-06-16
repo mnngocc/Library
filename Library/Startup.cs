@@ -52,6 +52,11 @@ namespace Library
                     .AddSessionStateTempDataProvider();
             services.AddDistributedMemoryCache();
             services.AddSession();
+            services.ConfigureApplicationCookie(o =>
+            {
+                o.ExpireTimeSpan = TimeSpan.FromHours(1);
+                
+            });
 
         }
 

@@ -177,6 +177,23 @@ namespace LibraryServices
 
             return patron.FirstName + " " + patron.LastName;
         }
+        public string GetCurrentHoldPatronPhone(int id)
+        {
+            var hold = _context.Holds
+                .Include(a => a.LibraryAsset)
+                .Include(a => a.LibraryCard)
+                .Where(v => v.Id == id);
+
+            var cardId = hold
+                .Include(a => a.LibraryCard)
+                .Select(a => a.LibraryCard.Id)
+                .FirstOrDefault();
+
+            var patron = _context.Patrons
+                .Include(p => p.LibraryCard)
+                .First(p => p.LibraryCard.Id == cardId);
+            return patron.TelephoneNumber;
+        }
 
         public string GetCurrentHoldPlaced(int id)
         {

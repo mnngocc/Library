@@ -54,6 +54,7 @@ namespace Library.Areas.Employee.Controllers
                 { 
                     HoldPlaced = _checkouts.GetCurrentHoldPlaced(a.Id).ToString(),
                     PatronName = _checkouts.GetCurrentHoldPatron(a.Id),
+                    PatronPhone = _checkouts.GetCurrentHoldPatronPhone(a.Id)
                    
                 });
             var model = new AssetDetailModel
