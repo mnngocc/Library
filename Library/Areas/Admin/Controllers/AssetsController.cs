@@ -88,6 +88,7 @@ namespace Library.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(Book newBook, IFormFile ImageUrl)
         {
+            
             if (ImageUrl != null)
             {
                 newBook.ImageUrl = "/images/assets/" + ImageUrl.FileName;

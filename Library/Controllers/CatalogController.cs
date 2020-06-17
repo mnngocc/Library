@@ -44,7 +44,7 @@ namespace Library.Controllers
 
         public IActionResult Detail(int id)
         {
-            //HttpContext.Session.SetInt32("LibraryCard",
+
             int libCard = 0;
             bool isLogin = false;
             if (HttpContext.Session.GetString("username") != null)

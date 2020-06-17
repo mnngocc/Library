@@ -2,6 +2,8 @@
     ViewBag.Title = "LIBRARY";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model Library.Data.Models.Patron
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
     .signup {
         margin-bottom: 150px;
@@ -65,26 +67,41 @@
                 <div class="col-md-6">
                     <div class="signin-form" style="padding-top: 100px">
                         <h2 class="form-title">Register</h2>
-                        <form method="POST" class="register-form" id="login-form">
+                        <form method="POST" asp-controller="Patron" asp-action="SubmitRegister" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" />
+                                <input type="text" asp-for="FirstName" Name="FirstName" placeholder="First Name" />
                             </div>
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Username" />
+                                <input type="text" asp-for="LastName" Name="LastName" placeholder="Last Name" />
                             </div>
                             <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" />
-                            </div>
-                            <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Confirm Password" />
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="number" asp-for="TelephoneNumber" Name="TelephoneNumber" placeholder="Your phone" required />
                             </div>
 
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" asp-for="Email" Name="Email" id="email" placeholder="Email" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" asp-for="Username" Name="Username" id="username" placeholder="Username" required />
+                            </div>
+                            <div id="content"></div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" asp-for="Password" Name="Password" id="password" placeholder="Password" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="your_pass" id="confirm_password" placeholder="Confirm Password" required />
+                            </div>
+                            <div id="notice2"></div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Submit" />
+                                <input type="submit" name="signin" id="submit" class="form-submit" value="Submit" />
                             </div>
                         </form>
 
@@ -92,7 +109,6 @@
                 </div>
                 <div class="col-md-6">
                     <div class="signin-image" style="padding-top: 100px">
-
                         <figure><img src="~/Assets/register/images/library-png-2.png" style="width: 320px; height: 390px" alt="sing up image"></figure>
                         <a asp-controller="Patron" asp-action="Login" class="signup-image-link">I am already member!</a>
                     </div>
@@ -102,3 +118,52 @@
     </div>
 
 </section>
+
+<script>
+    $('#password, #confirm_password').on('change', function () {
+        var newPass = $('#password').val();
+        var retypePass = $('#confirm_password').val();
+        //alert(retypePass);
+        if (newPass === retypePass) {
+            $('#notice2').html('<span style="color:green">Matched</span>');
+            $('#submit').removeAttr('disabled');
+        } else {
+            $('#notice2').html('<span style="color:red">Not match</span>');
+            $('#submit').attr('disabled',true);
+            //alert("Password not match");
+        }
+    });
+
+    $('#username, #email').on('change', function () {
+        
+        var username = $('#username').val();
+        var email = $('#email').val();
+        var data = { username: username, email: email };
+        //e.preventDefault();
+        $.ajax(
+            {
+                url: '@Url.Action("CheckUsername", "Patron")',
+                type: "POST",
+                data: data,           
+                cache:false,
+                success: function (response) {
+                    
+                    console.log(response);
+                    if (response == 1) {
+                        $('#content').html('<span style="color:red">Username or Email already exists</span>');
+                        $('#submit').attr('disabled',true);
+                    }
+                    else {
+                        $('#content').html('<span style="color:green"></span>');
+                        $('#submit').removeAttr('disabled');
+                    }
+                        
+
+                },
+                error: function (e) {
+                    alert('error');
+                }
+            });
+    });
+    
+</script>

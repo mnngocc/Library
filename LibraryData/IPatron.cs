@@ -12,7 +12,10 @@ namespace LibraryData
         Patron Get(int id);
         Patron GetByUsername(string username);
         void Add(Patron newPatron);
+        int AddNewPatron(Patron newPatron);
+        int AddNewLibraryCard(LibraryCard libCard);
         bool Authorize(string username, string password);
+        bool CheckUserExist(string username, string email);
         IEnumerable<CheckoutHistory> GetCheckoutHistory(int patronId);
         IEnumerable<Hold> GetHolds(int patronId);
         IEnumerable<Checkout> GetCheckouts(int id);

@@ -19,6 +19,7 @@ namespace LibraryServices
         }
         public void Add(Patron newPatron)
         {
+
             _context.Add(newPatron);
             _context.SaveChanges();
         }
@@ -134,6 +135,33 @@ namespace LibraryServices
                .Include(a => a.HomeLibraryBranch)
                .Include(a => a.Role)
                .Where(a => a.Role.RoleID == 3);
+        }
+
+        public bool CheckUserExist(string username, string email)
+        {
+            //throw new NotImplementedException();
+            var data = _context.Patrons
+                .Where(p => p.Username == username).FirstOrDefault();
+            var mail = _context.Patrons
+                .Where(p => p.Email == email).FirstOrDefault();
+            if (data != null || mail != null) return true;
+            return false;
+        }
+
+        public int AddNewPatron(Patron newPatron)
+        {           
+            _context.Patrons.Add(newPatron);
+            _context.SaveChanges();
+            int idInsertedPatron = newPatron.Id;
+            return idInsertedPatron;
+        }
+
+        public int AddNewLibraryCard(LibraryCard libCard)
+        {           
+            _context.LibraryCards.Add(libCard);
+            _context.SaveChanges();
+            int idInserted = libCard.Id;
+            return idInserted;
         }
     }
 }

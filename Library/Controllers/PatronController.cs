@@ -9,13 +9,14 @@ using LibraryData;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace Library.Controllers
 {
     public class PatronController : Controller
     {
         private readonly IPatron _patronService;
-        public string _username;
+        
 
         public PatronController(IPatron patronService)
         {
@@ -25,7 +26,6 @@ namespace Library.Controllers
 
         public IActionResult Index()
         {
-
             return View();
         }
         public IActionResult Login()
@@ -88,12 +88,32 @@ namespace Library.Controllers
             HttpContext.Session.Remove("username");
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpPost]
+
+        public JsonResult CheckUsername(string username, string email )
+        {           
+            var result = _patronService.CheckUserExist(username, email);
+            if (result) return Json("1");
+            
+            return Json("0");
+        }
         public IActionResult RegisterForm()
         {
-
             return View();
         }
-
+        [HttpPost]
+        public IActionResult SubmitRegister(Patron patron)
+        {
+            LibraryCard libCard = new LibraryCard();
+            var now = DateTime.Now;
+            libCard.Fees = 0;
+            libCard.Created = now;
+            var idCard = _patronService.AddNewLibraryCard(libCard);
+            patron.LibraryCardId = idCard;
+            _patronService.AddNewPatron(patron);
+            return View("Login");
+        }
 
        
     }
