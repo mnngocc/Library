@@ -167,7 +167,15 @@ namespace LibraryServices
         public bool AuthorizeEmployee(string username, string password)
         {
             //throw new NotImplementedException();
-            var details = _context.Patrons.Where(p => p.Username == username && p.Password == password).FirstOrDefault();
+            var details = _context.Patrons.Where(p => p.Username == username && p.Password == password && p.RoleID == 2).FirstOrDefault();
+            if (details != null) return true;
+            else return false;
+        }
+
+        public bool AuthorizeAdmin(string username, string password)
+        {
+            //throw new NotImplementedException();
+            var details = _context.Patrons.Where(p => p.Username == username && p.Password == password && p.RoleID == 1).FirstOrDefault();
             if (details != null) return true;
             else return false;
         }

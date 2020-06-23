@@ -653,6 +653,7 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Area
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Branches\EditBranch.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Branches\ListBranch.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Login.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Patron\Detail.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Patron\Index.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_Layout.cshtml.g.cs
@@ -665,6 +666,10 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Area
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Catalog\Hold.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Catalog\Index.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Home\Index.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Home\Login.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Add.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Detail.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Index.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Shared\_Layout.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\_ViewImports.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\_ViewStart.cshtml.g.cs
@@ -674,6 +679,10 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\View
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\Hold.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\Index.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Index.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Login.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Profile.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\RegisterForm.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -688,12 +697,3 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\staticweba
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.dll
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.pdb
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.genruntimeconfig.cache
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Index.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Login.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\RegisterForm.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Profile.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Detail.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Index.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Add.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Login.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Home\Login.cshtml.g.cs
