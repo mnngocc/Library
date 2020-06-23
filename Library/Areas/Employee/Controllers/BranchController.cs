@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Library.Models.Branch;
 using LibraryData;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Areas.Employee.Controllers
@@ -21,7 +22,13 @@ namespace Library.Areas.Employee.Controllers
        
         public IActionResult Index()
         {
-            var branchModels = _branchService.GetAll()
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            else
+            {
+                            var branchModels = _branchService.GetAll()
                 .Select(br => new BranchDetailModel
                 {
                     Id = br.Id,
@@ -37,6 +44,8 @@ namespace Library.Areas.Employee.Controllers
             };
 
             return View(model);
+            }
+
         }
         public IActionResult Detail(int id)
         {

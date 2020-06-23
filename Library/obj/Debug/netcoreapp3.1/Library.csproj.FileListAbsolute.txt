@@ -694,3 +694,6 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\View
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\Profile.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Detail.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Index.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Add.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\Login.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Home\Login.cshtml.g.cs

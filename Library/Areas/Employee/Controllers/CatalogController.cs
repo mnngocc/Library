@@ -149,7 +149,7 @@ namespace Library.Areas.Employee.Controllers
         public IActionResult PlaceHold(int assetId, int libraryCardId)
         {
             string msg = "";
-            if (_checkouts.CheckHoldExist(assetId, libraryCardId) || _checkouts.CheckLibraryCardId(libraryCardId))
+            if (_checkouts.CheckHoldExist(assetId, libraryCardId) || _checkouts.CheckLibraryCardId(libraryCardId)  )
             {
                 ViewBag.error = "Invalid";
                 msg += "invalid";

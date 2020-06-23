@@ -1,0 +1,90 @@
+﻿@model Library.Data.Models.Patron
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Employee/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <form method="post" asp-controller="Patron" asp-action="SubmitAdd" enctype="multipart/form-data">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>First Name: </label>
+                    <input type="text" value="" asp-for="FirstName" Name="FirstName" class="form-control" placeholder="First Name" />
+
+                    <label>Last Name: </label>
+                    <input type="text" value="" asp-for="LastName" Name="LastName" class="form-control" placeholder="Last Name" />
+
+                    <label>Username: </label>
+                    <input type="text" value="" asp-for="Username" Name="Username" id="username" class="form-control" placeholder="Username" />
+
+                    <label>Email</label>
+                    <input type="text" value="" asp-for="Email" Name="Email" id="email" placeholder="Email" class="form-control" />
+
+                    <br />
+                </div>
+
+                <div class="col-md-4">
+                    <label>Telephone Number</label>
+                    <input type="number" value="" asp-for="TelephoneNumber" Name="TelephoneNumber" placeholder="Telephone Number" class="form-control" />
+
+                    <label>Home Library</label>
+                    @Html.DropDownList("HomeLibraryBranchId", (IEnumerable<SelectListItem>)ViewBag.branchList, new { @class = "form-control" })
+
+                    <label>Address: </label>
+                    <input type="text" value="" asp-for="Address" Name="Address" class="form-control" placeholder="Address" />
+
+                    <label>Date of birth</label>
+
+                    <input type="date" value="" asp-for="DateOfBirth" Name="DateOfBirth" class="form-control" />
+                </div>
+            </div>
+            <div class="row" id="content"></div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <p>
+                        <input class="btn btn-lg btn-info" type="submit" id="submit" value="Save" />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    $('#username, #email').on('change', function () {
+
+        var username = $('#username').val();
+        var email = $('#email').val();
+        var data = { username: username, email: email };
+        //e.preventDefault();
+        $.ajax(
+            {
+                url: '@Url.Action("CheckUsername", "Patron")',
+                type: "POST",
+                data: data,
+                cache:false,
+                success: function (response) {
+
+                    console.log(response);
+                    if (response == 1) {
+                        $('#content').html('<span style="color:red">Username or Email already exists</span>');
+                        $('#submit').attr('disabled',true);
+                    }
+                    else {
+                        $('#content').html('<span style="color:green"></span>');
+                        $('#submit').removeAttr('disabled');
+                    }
+
+
+                },
+                error: function (e) {
+                    //alert('error');
+                }
+            });
+    });
+
+</script>

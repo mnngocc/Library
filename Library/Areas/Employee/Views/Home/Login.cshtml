@@ -1,0 +1,36 @@
+﻿@model Library.Data.Models.Patron
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Employee/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <form method="post" asp-controller="Home" asp-action="SubmitLogin" enctype="multipart/form-data">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-4">
+
+                    <label>Username: </label>
+                    <input type="text" value="" asp-for="Username" Name="Username" id="username" class="form-control" placeholder="Username" />
+
+                    <label>Password</label>
+                    <input type="password" value="" asp-for="Password" Name="Password" id="password" placeholder="Password" class="form-control" />
+
+                    <br />
+                </div>
+
+
+            </div>
+            <div class="row" id="content">@ViewBag.error</div>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <p>
+                        <input class="btn btn-lg btn-info" type="submit" id="submit" value="Login" />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

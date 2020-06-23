@@ -373,8 +373,9 @@ namespace LibraryServices
         public bool CheckLibraryCardId(int id)
         {
            // throw new NotImplementedException();
-            var item = _context.LibraryCards              
-               .Where(a => a.Id == id).FirstOrDefault();
+            var item = _context.Patrons              
+               .Where(a => a.LibraryCardId == id && a.RoleID == 3).FirstOrDefault();
+       
             if (item == null) return true;
             else return false;
 

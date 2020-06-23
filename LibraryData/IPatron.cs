@@ -15,6 +15,7 @@ namespace LibraryData
         int AddNewPatron(Patron newPatron);
         int AddNewLibraryCard(LibraryCard libCard);
         bool Authorize(string username, string password);
+        bool AuthorizeEmployee(string username, string password);
         bool CheckUserExist(string username, string email);
         IEnumerable<CheckoutHistory> GetCheckoutHistory(int patronId);
         IEnumerable<Hold> GetHolds(int patronId);

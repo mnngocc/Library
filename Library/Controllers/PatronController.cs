@@ -111,6 +111,7 @@ namespace Library.Controllers
             libCard.Created = now;
             var idCard = _patronService.AddNewLibraryCard(libCard);
             patron.LibraryCardId = idCard;
+            patron.RoleID = 3;
             _patronService.AddNewPatron(patron);
             return View("Login");
         }
