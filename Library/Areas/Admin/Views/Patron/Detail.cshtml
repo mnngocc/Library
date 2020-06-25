@@ -6,11 +6,19 @@
 }
 
 <div class="container">
-    <div class="header clearfix detailHeading">
-        <h2 class="text-muted">Patron Information</h2>
-    </div>
+
     <div class="jumbotron">
+
         <div class="row">
+            <div class="">
+                <h2 class="text-muted">Patron Information</h2>
+                
+                    <a class="btn btn-success" href="/Admin/Patron/EditInfo/@Model.Id">Edit Infomation</a>
+                
+            </div>
+        </div>
+        <div class="row">
+           
             <div class="col-md-4">
                 <div>
                     <h2>@Model.FirstName @Model.LastName</h2>
@@ -23,6 +31,8 @@
                         @if (@Model.OverdueFees > 0)
                         {
                             <div id="patronHasFees">Current Fees Due: $@Model.OverdueFees</div>
+                            <br />
+                            <a class="btn btn-info">Pay fees</a>
                         }
                         else
                         {

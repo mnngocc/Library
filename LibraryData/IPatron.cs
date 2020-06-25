@@ -18,6 +18,9 @@ namespace LibraryData
         bool AuthorizeEmployee(string username, string password);
         bool AuthorizeAdmin(string username, string password);
         bool CheckUserExist(string username, string email);
+        bool CheckCurrentPass(int id,string current);
+     
+        public bool Update(Patron newPatron);
         IEnumerable<CheckoutHistory> GetCheckoutHistory(int patronId);
         IEnumerable<Hold> GetHolds(int patronId);
         IEnumerable<Checkout> GetCheckouts(int id);

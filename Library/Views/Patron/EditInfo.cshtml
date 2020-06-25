@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewData["Title"] = "EditInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@using Library.Models.Patron
+@model PatronDetailModel
+<div class="container">
+    <div class="jumbotron">
+
+        <div class="row">
+            <div class="">
+                <br />
+                <h2 class="text-muted">Edit Information</h2>
+                <h4 class="text-muted">(User ID: @Model.Id)</h4>
+            </div>
+        </div>
+        <form method="post" action="~/Patron/Update/@Model.Id" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Library Card ID: </label>
+                    <input type="text" readonly value="@Model.LibraryCardId" Name="LibraryCardId" class="form-control" required />
+                    <input type="hidden" value="@Model.Id" id="patronid" />
+                    <label>First Name: </label>
+                    <input type="text" value="@Model.FirstName" Name="FirstName" class="form-control" required />
+
+                    <label>Last Name: </label>
+                    <input type="text" value="@Model.LastName" Name="LastName" class="form-control" required />
+
+                    <label>Email</label>
+                    <input type="text" value="@Model.Email" Name="Email" id="email" class="form-control" required />
+
+                    <br />
+                </div>
+
+                <div class="col-md-4">
+                    <label>Telephone Number</label>
+                    <input type="text" value="@Model.Telephone" Name="Telephone" class="form-control" required />
+
+                    <label>Address </label>
+                    <input type="text" value="@Model.Address" Name="Address" class="form-control" required />
+
+                    <label>Date of birth </label>
+
+                    <input type="date" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" Name="DateOfBirth" class="form-control" required />
+                    <label>Change your password</label>
+                    <br />
+                    <a class="btn btn-warning" id="changePass">Change password</a>
+                </div>
+
+                <div class="col-md-4 changePass" style="display: none">
+                    <label>Current Password</label>
+                    <input type="password" value="@Model.Password" id="current_password" class="form-control" />
+                    <div id="content"></div>
+                    <label>New Password: </label>
+                    <input type="password" value="" class="form-control" id="password" />
+
+                    <label>Confirm Password: </label>
+
+                    <input type="password" value="" Name="Password" id="confirm_password" class="form-control" />
+                    <div id="notice2"></div>
+                    <label>   </label>
+                    <br />
+
+                    <img style="height:40px; width: 45px" id="back" src="https://image.flaticon.com/icons/png/512/93/93634.png" />
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <p>
+                        <input class="btn btn-lg btn-info" type="submit" id="submit" value="Save" />
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $('#changePass').on('click', function () {
+        $('.changePass').css('display', '');
+    });
+    $('#back').on('click', function () {
+        $('#password').val('');
+        $('#confirm_password').val('');
+        $('#current_password').val('');
+        $('.changePass').css('display', 'none');
+        console.log($('#password').val());
+    });
+    $('#password, #confirm_password').on('change', function () {
+        var newPass = $('#password').val();
+        var retypePass = $('#confirm_password').val();
+        //alert(newPass);
+        if (newPass === retypePass) {
+            $('#notice2').html('<span style="color:green">Matched</span>');
+            $('#submit').removeAttr('disabled');
+        } else {
+            $('#notice2').html('<span style="color:red">Not match</span>');
+            $('#submit').attr('disabled', true);
+            //alert("Password not match");
+        }
+    });
+
+    $('#current_password').on('change', function () {
+        var current = $('#current_password').val();
+        var id = $('#patronid').val();
+        var data = { id: id, current: current };
+        $.ajax(
+            {
+                url: '@Url.Action("CheckCurrentPass", "Patron")',
+                type: "POST",
+                data: data,
+                cache:false,
+                success: function (response) {
+
+                    console.log(response);
+                    if (response == 1) {
+                        $('#content').html('<span style="color:red">Invalid Password</span>');
+                        $('#submit').attr('disabled',true);
+                    }
+                    else {
+                        $('#content').html('<span style="color:green"></span>');
+                        $('#submit').removeAttr('disabled');
+                    }
+
+
+                },
+                error: function (e) {
+                    //alert('error');
+                }
+            });
+    });
+
+</script>
+
+
+

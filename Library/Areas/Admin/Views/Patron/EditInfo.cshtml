@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "EditInfo";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using Library.Models.Patron
+@model PatronDetailModel
+
+<div class="container">
+    <div class="jumbotron">
+
+        <div class="row">
+            <div class="">
+                <h2 class="text-muted">Edit Information</h2>
+                <h4 class="text-muted">(User ID: @Model.Id)</h4>
+            </div>
+        </div>
+        <form method="post" action="~/Admin/Patron/Update/@Model.Id" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Library Card ID: </label>
+                    <input type="text" readonly value="@Model.LibraryCardId" Name="LibraryCardId" class="form-control" required />
+                    <label>First Name: </label>
+                    <input type="text" value="@Model.FirstName" Name="FirstName" class="form-control" required />
+
+                    <label>Last Name: </label>
+                    <input type="text" value="@Model.LastName" Name="LastName" class="form-control" required />
+
+                    <label>Email</label>
+                    <input type="text" value="@Model.Email" Name="Email" id="email" class="form-control" required />
+
+                    <br />
+                </div>
+
+                <div class="col-md-4">
+                    <label>Telephone Number</label>
+                    <input type="text" value="@Model.Telephone" Name="Telephone"  class="form-control" required />
+
+                    <label>Address: </label>
+                    <input type="text" value="@Model.Address" Name="Address" class="form-control" required />
+
+                    <label>Date of birth: </label>
+
+                    <input type="date" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")"  Name="DateOfBirth" class="form-control" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <p>
+                        <input class="btn btn-lg btn-info" type="submit" id="submit" value="Save" />
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+

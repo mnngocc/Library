@@ -697,3 +697,7 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\staticweba
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.dll
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.pdb
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Library.genruntimeconfig.cache
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Patron\AddPatron.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Patron\EditInfo.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\EditInfo.cshtml.g.cs
+E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\EditInfo.cshtml.g.cs

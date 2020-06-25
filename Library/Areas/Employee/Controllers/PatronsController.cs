@@ -136,5 +136,64 @@ namespace Library.Areas.Employee.Controllers
         {
             return View();
         }
+
+        public IActionResult EditInfo(int id)
+        {
+            var patron = _patronService.Get(id);
+            var model = new PatronDetailModel
+            {
+                Id = id,
+                FirstName = patron.FirstName,
+                LastName = patron.LastName,
+                Address = patron.Address,
+                Telephone = patron.TelephoneNumber,
+                LibraryCardId = patron.LibraryCardId,
+                Email = patron.Email,
+                DateOfBirth = patron.DateOfBirth
+            };
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult Update()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Update(PatronDetailModel patron)
+        {
+            var data = _patronService.Get(patron.Id);
+            if (ModelState.IsValid)
+            {
+                data.Id = patron.Id;
+                data.FirstName = patron.FirstName;
+                data.LastName = patron.LastName;
+                data.TelephoneNumber = patron.Telephone;
+                data.Email = patron.Email;
+                data.DateOfBirth = patron.DateOfBirth;
+                bool resulut = _patronService.Update(data);
+            }
+            else
+            {
+                ViewBag.Error = "Missing value";
+            }
+
+            var patrondetail = _patronService.Get(patron.Id);
+            var model = new PatronDetailModel
+            {
+                Id = patrondetail.Id,
+                LastName = patrondetail.LastName ?? "No Last Name Provided",
+                FirstName = patrondetail.FirstName ?? "No First Name Provided",
+                Address = patrondetail.Address ?? "No Address Provided",
+                HomeLibrary = patrondetail.HomeLibraryBranch?.Name ?? "No Home Library",
+                MemberSince = patrondetail.LibraryCard?.Created,
+                OverdueFees = patrondetail.LibraryCard?.Fees,
+                LibraryCardId = patrondetail.LibraryCard?.Id,
+                Telephone = string.IsNullOrEmpty(patrondetail.TelephoneNumber) ? "No Telephone Number Provided" : patrondetail.TelephoneNumber,
+                AssetsCheckedOut = _patronService.GetCheckouts(patron.Id).ToList(),
+                CheckoutHistory = _patronService.GetCheckoutHistory(patron.Id),
+                Holds = _patronService.GetHolds(patron.Id)
+            };
+            return View("Detail", model);
+        }
     }
 }

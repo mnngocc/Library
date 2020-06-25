@@ -179,5 +179,36 @@ namespace LibraryServices
             if (details != null) return true;
             else return false;
         }
+
+        public bool Update(Patron newPatron)
+        {
+            var _patron = _context.Patrons.Find(newPatron.Id);
+            try
+            {
+                _patron.FirstName = newPatron.FirstName;
+                _patron.LastName = newPatron.LastName;
+                _patron.Address = newPatron.Address;
+                _patron.Email = newPatron.Email;
+                _patron.TelephoneNumber = newPatron.TelephoneNumber;
+                _patron.DateOfBirth = newPatron.DateOfBirth;
+                //Update Author or Director
+
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool CheckCurrentPass(int id,string current)
+        {
+            var data = _context.Patrons
+               .Where(p => p.Id == id && p.Password == current).FirstOrDefault();
+           
+            if (data != null) return true;
+            return false;
+        }
     }
 }

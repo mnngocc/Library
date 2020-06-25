@@ -42,28 +42,33 @@ namespace Library.Areas.Admin.Controllers
         }
       
         public IActionResult ListBook()
-        {         
-            var assetModels = _assets.GetAll();
-            var ListingResult = assetModels
-                        .Select(result => new BookIndexListingModel
-                        {
-                            Id = result.Id,
-                            ImageURL = result.ImageUrl,
-                            AuthorOrDirector = _assets.GetAuthorOrDirector(result.Id),
-                            DeweyCallNumber = _assets.GetDeweyIndex(result.Id),
-                            Title = result.Title,
-                            NumberOfCopies = result.NumberOfCopies.ToString(),
-                            Year = result.Year.ToString(),
-                            Status = result.Status.ToString(),
-                            Cost = result.Cost.ToString(),                      
-                            Location = _asset.GetCurrentLocation(result.Id)?.Name.ToString()
-                           // Location = result.Location.Name
-                        });
-            var model = new BookIndexModel()
+        {
+            if (HttpContext.Session.GetString("username") != null)
             {
-                Books = ListingResult
-            };
-            return View(model);
+                var assetModels = _assets.GetAll();
+                var ListingResult = assetModels
+                            .Select(result => new BookIndexListingModel
+                            {
+                                Id = result.Id,
+                                ImageURL = result.ImageUrl,
+                                AuthorOrDirector = _assets.GetAuthorOrDirector(result.Id),
+                                DeweyCallNumber = _assets.GetDeweyIndex(result.Id),
+                                Title = result.Title,
+                                NumberOfCopies = result.NumberOfCopies.ToString(),
+                                Year = result.Year.ToString(),
+                                Status = result.Status.ToString(),
+                                Cost = result.Cost.ToString(),
+                                Location = _asset.GetCurrentLocation(result.Id)?.Name.ToString()
+                                // Location = result.Location.Name
+                            });
+                var model = new BookIndexModel()
+                {
+                    Books = ListingResult
+                };
+                return View(model);
+            }
+            else return RedirectToAction("Login", "Home");
+                
         }
         [HttpGet]
         public IActionResult Create()
