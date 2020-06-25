@@ -71,11 +71,15 @@ namespace LibraryServices
         public IEnumerable<Checkout> GetCheckouts(int id)
         {
             var patronCardId = Get(id).LibraryCard.Id;
-            return _context.Checkouts
+            var now = DateTime.Now;
+            var data = _context.Checkouts
                 .Include(a => a.LibraryCard)
                 .Include(a => a.LibraryAsset)
                 .Where(v => v.LibraryCard.Id == patronCardId);
+             
+                return data;
         }
+
 
         public IEnumerable<Checkout> GetCheckoutsByUsername(string username)
         {
@@ -209,6 +213,22 @@ namespace LibraryServices
            
             if (data != null) return true;
             return false;
+        }
+
+        public bool UpdateLibCard(LibraryCard libCard)
+        {
+            var _libCard = _context.LibraryCards.Find(libCard.Id);
+            try
+            {
+                _libCard.Fees = libCard.Fees;
+                //Update Author or Director
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

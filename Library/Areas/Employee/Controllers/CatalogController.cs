@@ -121,6 +121,7 @@ namespace Library.Areas.Employee.Controllers
 
         public IActionResult CheckIn(int id) //Tra sach
         {
+
              _checkouts.CheckInItem(id);
             return RedirectToAction("Detail", new {id});
         }

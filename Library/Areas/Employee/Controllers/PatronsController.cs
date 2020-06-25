@@ -24,7 +24,7 @@ namespace Library.Areas.Employee.Controllers
             _patronService = patronService;
             _branch = branch;
         }
-
+      
         public IActionResult Index()
         {
             if (HttpContext.Session.GetString("username") == null)
@@ -54,10 +54,41 @@ namespace Library.Areas.Employee.Controllers
             }   
         }
 
+       
         public IActionResult Detail(int id)
         {
+            string msg = "";
             var patron = _patronService.Get(id);
-
+            var list = _patronService.GetCheckouts(id).ToList();
+            var libCard = patron.LibraryCard?.Id;
+            var now = DateTime.Now;
+            int fee = 0;
+            
+            if (list.Any())
+            {
+                foreach(var checkout in list)
+                    {
+                    
+                    if (checkout.Until < now)
+                        {
+                        
+                        TimeSpan timespan = now - checkout.Until;
+                        int days = timespan.Days;
+                        fee += days * 2;
+                        msg += days;
+                    }    
+                    }
+            }
+            if (fee != 0)
+            {
+                LibraryCard item = new LibraryCard();
+                item.Fees = fee;
+               
+                item.Id = (int)libCard;
+                _patronService.UpdateLibCard(item);
+               // msg += "2";
+            }    
+            
             var model = new PatronDetailModel
             {
                 Id = patron.Id,
@@ -66,7 +97,7 @@ namespace Library.Areas.Employee.Controllers
                 Address = patron.Address ?? "No Address Provided",
                 HomeLibrary = patron.HomeLibraryBranch?.Name ?? "No Home Library",
                 MemberSince = patron.LibraryCard?.Created,
-                OverdueFees = patron.LibraryCard?.Fees,
+                OverdueFees = fee,
                 LibraryCardId = patron.LibraryCard?.Id,
                 Telephone = string.IsNullOrEmpty(patron.TelephoneNumber) ? "No Telephone Number Provided" : patron.TelephoneNumber,
                 AssetsCheckedOut = _patronService.GetCheckouts(id).ToList(),
@@ -75,6 +106,7 @@ namespace Library.Areas.Employee.Controllers
             };
 
             return View(model);
+           // return Content(msg);
         }
         public IActionResult Add()
         {
