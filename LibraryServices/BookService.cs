@@ -110,5 +110,11 @@ namespace LibraryServices
                 return false;
             }
         }
+
+        public int GetNumBook()
+        {
+            return _context.Books.Count();
+
+        }
     }
 }

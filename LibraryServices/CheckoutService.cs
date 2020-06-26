@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Library.Data;
 using Library.Data.Models;
 using LibraryData;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryServices
@@ -381,6 +383,122 @@ namespace LibraryServices
 
         }
 
-       
+        public int NumCheckout()
+        {
+            //throw new NotImplementedException();
+            return _context.CheckoutHistories.Count();
+        }
+
+        public int NumBranch()
+        {
+            return _context.LibraryBranches.Count();
+        }
+
+        public string TopAssetName()
+        {
+            var topId = TopAsset();
+            var data = _context.LibraryAssets.Find(topId);
+            return data.Title;
+        }
+        public Patron TopPatron()
+        {
+            var top = _context.CheckoutHistories
+                     .GroupBy(n => n.LibraryCard.Id)
+                     .Select(n => new
+                     {
+                         libCard = n.Key,
+                         Count = n.Count()
+                     }
+                     )
+                     .OrderBy(n => n.libCard).ToList();
+            int id = 0;
+            int max = 0;
+            foreach (var item in top)
+            {
+                if (item.Count > max)
+                {
+                    max = item.Count;
+                    id = item.libCard;
+                }
+            }
+
+            var data = _context.Patrons
+                .Include(p => p.LibraryCard)
+                 .Where(p => p.LibraryCardId == id).FirstOrDefault();
+          
+            return data;
+        }
+        public LibraryBranch TopBranch()
+        {
+            var top = _context.CheckoutHistories
+                     .GroupBy(n => n.LibraryAsset.Id)
+                     .Select(n => new
+                     {
+                         Asset = n.Key,
+                         Count = n.Count()
+                     }
+                     )
+                     .OrderBy(n => n.Asset).ToList();
+            var branchs = _context.LibraryBranches.ToList();
+            var assets = _context.LibraryAssets.ToList();
+            int max_count = 0;
+            int branch_id = 0;
+            foreach (var branch in branchs)
+            {
+                int branch_count = 0;
+                  foreach(var asset in assets)
+                  {
+                    if(asset.LocationId == branch.Id)
+                    {
+                        foreach (var item in top)
+                        {
+                            if (item.Asset == asset.Id)
+                            {
+                                branch_count += item.Count;
+                            }
+                        }
+                    }
+                  }
+                if (branch_count >= max_count)
+                {
+                    branch_id = branch.Id;
+                    max_count = branch_count;
+                }
+            }
+            return _context.LibraryBranches.Find(branch_id);
+           
+        }
+
+        public string TopAssetImg()
+        {
+            var topId = TopAsset();
+            var data = _context.LibraryAssets.Find(topId);
+            return data.ImageUrl;
+        }
+
+        public int TopAsset()
+        {
+            var top = _context.CheckoutHistories
+                     .GroupBy(n => n.LibraryAsset.Id)
+                     .Select(n => new
+                     {
+                         Asset = n.Key,
+                         Count = n.Count()                    
+                     }
+                     )
+                     .OrderBy(n => n.Asset).ToList();
+            int id = 0;
+            int max = 0;
+            foreach (var item in top)
+            {             
+                if (item.Count > max)
+                {
+                    max = item.Count;
+                    id = item.Asset;
+                }
+            }
+             
+            return id;
+        }
     }
 }

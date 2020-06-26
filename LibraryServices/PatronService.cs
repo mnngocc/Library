@@ -230,5 +230,11 @@ namespace LibraryServices
                 return false;
             }
         }
+
+        public int NumPatron()
+        {
+            return _context.Patrons.Count();
+            //throw new NotImplementedException();
+        }
     }
 }

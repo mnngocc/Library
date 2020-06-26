@@ -20,7 +20,7 @@ namespace LibraryData
         bool AuthorizeAdmin(string username, string password);
         bool CheckUserExist(string username, string email);
         bool CheckCurrentPass(int id,string current);
-     
+        int NumPatron();
         public bool Update(Patron newPatron);
         IEnumerable<CheckoutHistory> GetCheckoutHistory(int patronId);
         IEnumerable<Hold> GetHolds(int patronId);

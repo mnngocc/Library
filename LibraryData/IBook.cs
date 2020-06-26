@@ -16,6 +16,7 @@ namespace LibraryData
         string GetDeweyIndex(int id);
         string GetTitle(int id);
         string GetIsbn(int id);
+        int GetNumBook();
     
     }
 }

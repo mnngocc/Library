@@ -72,7 +72,7 @@ namespace Library.Areas.Employee.Controllers
                     if (checkout.Until < now)
                         {
                         
-                        TimeSpan timespan = now - checkout.Until;
+                        TimeSpan timespan = now.Date - checkout.Until.Date;
                         int days = timespan.Days;
                         fee += days * 2;
                         msg += days;

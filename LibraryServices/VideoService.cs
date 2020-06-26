@@ -48,6 +48,11 @@ namespace LibraryServices
             return _context.Videos.FirstOrDefault(a => a.Id == id).Title;
         }
 
+        public int NumVideo()
+        {
+            return _context.Videos.Count();
+        }
+
         public bool Update(Video video)
         {
             var _asset = _context.Videos.Find(video.Id);

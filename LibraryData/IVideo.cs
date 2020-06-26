@@ -13,5 +13,6 @@ namespace LibraryData
         public bool Update(Video video);
         string GetAuthorOrDirector(int id);
         string GetTitle(int id);
+        int NumVideo();
     }
 }
