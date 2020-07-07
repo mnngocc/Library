@@ -147,27 +147,28 @@
                 cache: false,
                 success: function (response) {
                     $(".report").empty();
-                    var sum = 0;
+                    var max = 0;
                     if (response) {
                         console.log(response);
                         for (var k in response) {
-                            sum += response[k];
+                            if (response[k]>max)
+                            max = response[k];
                         }
                     };
                     $(".report").append(function () {
                         return '<ul class="y-axis">' +
-                            '<li><span>100</span></li>' +
-                            '<li><span>80</span></li>' +
-                            '<li><span>60</span></li>' +
-                            '<li><span>40</span></li>' +
-                            '<li><span>20</span></li>' +
+                            '<li><span>' +max+'</span></li>' +
+                            '<li><span>' + Math.round(max / 5 * 4)+'</span></li>' +
+                            '<li><span>' + Math.round(max / 5 * 3)+'</span></li>' +
+                            '<li><span>' + Math.round(max / 5 * 2)+'</span></li>' +
+                            '<li><span>' + Math.round(max/5)+'</span></li>' +
                             '<li><span>0</span></li>' +
                             ' </ul >'
                     });
                     for (var k in response) {
                         $(".report").append(function () {
-                            var percent = Math.round((response[k] / sum * 100) * 100) / 100;
-                            if (sum == 0) percent = 0;
+                            var percent = Math.round((response[k] / max * 100) * 100) / 100;
+                            if (max == 0) percent = 0;
                             return '<div class="bar">' +
                                 '<div class="title">' + k.toUpperCase() + '</div>' +
                                 '<div class="value tooltips" title="' + response[k] + '" style="height:' + percent + '%;" data-toggle="tooltip" data-placement="top"></div>' +
@@ -180,4 +181,6 @@
                 }
             });
     }
+
+
 </script>

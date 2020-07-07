@@ -152,7 +152,8 @@ namespace LibraryServices
             return _context.CheckoutHistories
                     .Include(h => h.LibraryAsset)
                     .Include(h => h.LibraryCard)
-                    .Where(h => h.LibraryAsset.Id == id);
+                    .Where(h => h.LibraryAsset.Id == id)
+                    .OrderBy(h => h.CheckedOut);
            // throw new NotImplementedException();
         }
       
