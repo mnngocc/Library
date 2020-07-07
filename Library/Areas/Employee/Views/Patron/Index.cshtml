@@ -7,6 +7,14 @@
 
 <h3>Patrons</h3>
 <p><a class="btn btn-lg btn-success" role="button" asp-controller="Patron" asp-action="Add">New Patron</a></p>
+<div class="search-fa">
+    <p>Search:</p>
+</div>
+<div>
+    <form action="/Employee/Patron/Search" method="post">
+        <input class="form-control" type="text" name="searchString" placeholder="Type name/phone/address/library card, ..." />
+    </form>
+</div>
 <div id="patronIndex">
     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp customTable" id="patronIndexTable">
         <thead>
@@ -15,21 +23,25 @@
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Library Card Id</th>
+                <th>Telephone Number</th>
                 <th>Overdue Fees</th>
                 <th>Home Library</th>
+                <th>Address</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var patron in Model.Patrons)
             {
-                <tr>
-                    <td id="patronIcon"><a asp-controller="Patron" asp-action="Detail" asp-route-id="@patron.Id"><i class="fa fa-user fa-2x"></i></a></td>
-                    <td>@patron.LastName</td>
-                    <td>@patron.FirstName</td>
-                    <td>@patron.LibraryCardId</td>
-                    <td>@patron.OverdueFees</td>
-                    <td>@patron.HomeLibrary</td>
-                </tr>
+            <tr>
+                <td id="patronIcon"><a asp-controller="Patron" asp-action="Detail" asp-route-id="@patron.Id"><i class="fa fa-user fa-2x"></i></a></td>
+                <td>@patron.LastName</td>
+                <td>@patron.FirstName</td>
+                <td>@patron.LibraryCardId</td>
+                <td>@patron.Telephone</td>
+                <td>@patron.OverdueFees</td>
+                <td>@patron.HomeLibrary</td>
+                <td>@patron.Address</td>
+            </tr>
             }
         </tbody>
     </table>

@@ -21,6 +21,7 @@ namespace LibraryData
         bool CheckUserExist(string username, string email);
         bool CheckCurrentPass(int id,string current);
         int NumPatron();
+        IEnumerable<Patron> GetAllWith(string searchString);
         public bool Update(Patron newPatron);
         IEnumerable<CheckoutHistory> GetCheckoutHistory(int patronId);
         IEnumerable<Hold> GetHolds(int patronId);

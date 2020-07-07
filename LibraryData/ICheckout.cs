@@ -35,5 +35,6 @@ namespace LibraryData
         void MarkLost(int id);
         void MarkFound(int id);
         bool IsCheckedOut(int id);
+        IEnumerable<CheckoutHistory> getAll(int year);
     }
 }

@@ -4,7 +4,7 @@
 }
 
 @model Library.Models.Home.HomeDetailModel
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="row">
     <div class="col-lg-9 main-chart">
 
@@ -110,45 +110,16 @@
         <div class="row mt">
             <!--CUSTOM CHART START -->
             <div class="border-head">
-                <h3>VISITS</h3>
+                <h3>CHECKOUTS</h3>
             </div>
-            <div class="custom-bar-chart">
-                <ul class="y-axis">
-                    <li><span>10.000</span></li>
-                    <li><span>8.000</span></li>
-                    <li><span>6.000</span></li>
-                    <li><span>4.000</span></li>
-                    <li><span>2.000</span></li>
-                    <li><span>0</span></li>
-                </ul>
-                <div class="bar">
-                    <div class="title">JAN</div>
-                    <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
-                </div>
-                <div class="bar ">
-                    <div class="title">FEB</div>
-                    <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
-                </div>
-                <div class="bar ">
-                    <div class="title">MAR</div>
-                    <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
-                </div>
-                <div class="bar ">
-                    <div class="title">APR</div>
-                    <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
-                </div>
-                <div class="bar">
-                    <div class="title">MAY</div>
-                    <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
-                </div>
-                <div class="bar ">
-                    <div class="title">JUN</div>
-                    <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
-                </div>
-                <div class="bar">
-                    <div class="title">JUL</div>
-                    <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
-                </div>
+
+            <div>
+                <input type="number" name="year" id="year" value="2020" style="float:right; margin-bottom:10px;" />
+            </div>
+            <div style="float:none"><br /></div>
+
+            <div class="custom-bar-chart report">
+
             </div>
             <!--custom chart end-->
         </div><!-- /row -->
@@ -159,4 +130,54 @@
     *********************************************************************************************************************************************************** -->
 
     
-</div><! --/row -->
+</div>
+<script>
+    $(document).ready(function () {
+        LoadBarChart();
+        $('#year').on('change', LoadBarChart);
+    });
+    function LoadBarChart() {
+        var year = $('#year').val();
+        var data = { year: year };
+        $.ajax(
+            {
+                url: '@Url.Action("ReportEachYear", "Home")',
+                type: "POST",
+                data: data,
+                cache: false,
+                success: function (response) {
+                    $(".report").empty();
+                    var sum = 0;
+                    if (response) {
+                        console.log(response);
+                        for (var k in response) {
+                            sum += response[k];
+                        }
+                    };
+                    $(".report").append(function () {
+                        return '<ul class="y-axis">' +
+                            '<li><span>100</span></li>' +
+                            '<li><span>80</span></li>' +
+                            '<li><span>60</span></li>' +
+                            '<li><span>40</span></li>' +
+                            '<li><span>20</span></li>' +
+                            '<li><span>0</span></li>' +
+                            ' </ul >'
+                    });
+                    for (var k in response) {
+                        $(".report").append(function () {
+                            var percent = Math.round((response[k] / sum * 100) * 100) / 100;
+                            if (sum == 0) percent = 0;
+                            return '<div class="bar">' +
+                                '<div class="title">' + k.toUpperCase() + '</div>' +
+                                '<div class="value tooltips" title="' + response[k] + '" style="height:' + percent + '%;" data-toggle="tooltip" data-placement="top"></div>' +
+                                '</div>'
+                        });
+                    }
+                },
+                error: function (e) {
+                    //alert('error');
+                }
+            });
+    }
+</script>

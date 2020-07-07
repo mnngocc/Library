@@ -699,15 +699,6 @@ E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Area
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Patron\EditInfo.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Areas\Employee\Views\Patron\EditInfo.cshtml.g.cs
 E:\KH2-1920\Framework\Project\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Patron\EditInfo.cshtml.g.cs
-E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\PagedList.dll
-E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\PagedList.Mvc.dll
-E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
-E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
-E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
-E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
-E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
-E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
-E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 E:\KH2-1920\Framework\Project\Library\Library\bin\Debug\netcoreapp3.1\X.PagedList.dll

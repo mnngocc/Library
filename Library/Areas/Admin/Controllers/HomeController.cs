@@ -126,7 +126,34 @@ namespace Library.Areas.admin.Controllers
             return View("Login");
         }
 
-
+        public JsonResult ReportEachYear(int year)
+        {
+            var listCheckoutHistory = _checkout.getAll(year);
+            int[] months = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            if (listCheckoutHistory.Any())
+            {
+                foreach (var checkout in listCheckoutHistory)
+                {
+                    int m = checkout.CheckedIn.Value.Month;
+                    months[m - 1]++;
+                }
+            }
+            return Json(new
+            {
+                Jan = months[0],
+                Feb = months[1],
+                Mar = months[2],
+                Apr = months[3],
+                May = months[4],
+                Jun = months[5],
+                Jul = months[6],
+                Aug = months[7],
+                Sep = months[8],
+                Oct = months[9],
+                Nov = months[10],
+                Dec = months[11]
+            });
+        }
     }
 
 }

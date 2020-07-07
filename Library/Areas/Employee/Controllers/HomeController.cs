@@ -63,7 +63,28 @@ namespace Library.Areas.Employee.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Search(string searchString)
+        {
+            var assetModels = _assets.GetAllWith(searchString);
+            var ListingResult = assetModels
+                        .Select(result => new AssetIndexListingModel
+                        {
+                            Id = result.Id,
+                            ImageURL = result.ImageUrl,
+                            AuthorOrDirector = _assets.GetAuthorOrDirector(result.Id),
+                            DeweyCallNumber = _assets.GetDeweyIndex(result.Id),
+                            Title = result.Title,
+                            Type = _assets.GetType(result.Id),
+                            CurrentLocation = _assets.GetCurrentLocation(result.Id)?.Name
 
+                        });
+            var model = new AssetIndexModel()
+            {
+                Assets = ListingResult
+            };
+            return View("Index", model);
+        }
         [HttpPost]
         public IActionResult SubmitLogin(Patron patron)
         {

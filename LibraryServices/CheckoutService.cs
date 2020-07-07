@@ -501,5 +501,11 @@ namespace LibraryServices
              
             return id;
         }
+
+        public IEnumerable<CheckoutHistory> getAll(int year)
+        {
+            return _context.CheckoutHistories
+               .Where(p => p.CheckedIn.Value.Year == year);
+        }
     }
 }

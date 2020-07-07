@@ -55,8 +55,30 @@ namespace Library.Areas.Employee.Controllers
                 return View(model);
             }   
         }
+        [HttpPost]
+        public IActionResult Search(string searchString)
+        {
+            var assetModels = _patronService.GetAllWith(searchString);
+            var ListingResult = assetModels
+                        .Select(p => new PatronDetailModel
+                        {
+                            Id = p.Id,
+                            LastName = p.LastName ?? "No First Name Provided",
+                            FirstName = p.FirstName ?? "No Last Name Provided",
+                            LibraryCardId = p.LibraryCard?.Id,
+                            OverdueFees = p.LibraryCard?.Fees,
+                            HomeLibrary = p.HomeLibraryBranch?.Name,
+                            Telephone = p.TelephoneNumber,
+                            Address = p.Address
 
-       
+                        });
+            var model = new PatronIndexModel()
+            {
+                Patrons = ListingResult
+            };
+            return View("Index", model);
+        }
+
         public IActionResult Detail(int id)
         {
             string msg = "";

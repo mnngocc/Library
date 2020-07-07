@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Library.Models.Catalog;
 using Library.Models.CheckoutModels;
 using LibraryData;
-using PagedList;
-using PagedList.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

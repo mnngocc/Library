@@ -236,5 +236,15 @@ namespace LibraryServices
             return _context.Patrons.Count();
             //throw new NotImplementedException();
         }
+
+        public IEnumerable<Patron> GetAllWith(string searchString)
+        {
+            return _context.Patrons
+               .Include(a => a.LibraryCard)
+               .Include(a => a.HomeLibraryBranch)
+               .Where(p => p.FirstName.Contains(searchString) || p.LastName.Contains(searchString)
+                            || p.LibraryCardId.ToString().Contains(searchString)
+                            || p.Address.Contains(searchString) || p.TelephoneNumber.Contains(searchString));
+        }
     }
 }
