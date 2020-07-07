@@ -32,12 +32,12 @@ namespace Library.Areas.Employee.Controllers
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
+            if (HttpContext.Session.GetString("username") == null) {
                 return View("Login");
-            }    
-            else
-            {
+            }
+            else if (HttpContext.Session.GetInt32("role_id") == 3) 
+                return View("Login"); 
+            else {
                 var assetModels = _assets.GetAll();
                 var ListingResult = assetModels
                             .Select(result => new AssetIndexListingModel
@@ -72,11 +72,10 @@ namespace Library.Areas.Employee.Controllers
 
             if (result)
             {
-
                 HttpContext.Session.SetString("username", patron.Username);
                 HttpContext.Session.SetInt32("id", patron_id.Id);
                 HttpContext.Session.SetInt32("LibraryCard", patron_id.LibraryCard.Id);
-                
+                HttpContext.Session.SetInt32("role_id", patron_id.RoleID);
                 var assetModels = _assets.GetAll();
                 var ListingResult = assetModels
                             .Select(result => new AssetIndexListingModel
@@ -106,6 +105,9 @@ namespace Library.Areas.Employee.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("username");
+            HttpContext.Session.Remove("id");
+            HttpContext.Session.Remove("LibraryCard");
+            HttpContext.Session.Remove("role_id");
             return View("Login");
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

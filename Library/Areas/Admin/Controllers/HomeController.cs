@@ -31,7 +31,11 @@ namespace Library.Areas.admin.Controllers
         }
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("username") != null)
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return View("Login");
+            }
+            else if (HttpContext.Session.GetInt32("role_id") == 1)
             {
                  var numBook_ = _book.GetNumBook();
                 string msg = "";
@@ -81,6 +85,7 @@ namespace Library.Areas.admin.Controllers
                 HttpContext.Session.SetString("username", patron.Username);
                 HttpContext.Session.SetInt32("id", patron_id.Id);
                 HttpContext.Session.SetInt32("LibraryCard", patron_id.LibraryCard.Id);
+                HttpContext.Session.SetInt32("role_id", patron_id.RoleID);
                 var numBook_ = _book.GetNumBook();
                 var numVideo = _video.NumVideo();
                 var numPatron = _patronService.NumPatron();

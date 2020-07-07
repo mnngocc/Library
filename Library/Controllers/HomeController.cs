@@ -26,6 +26,7 @@ namespace Library.Controllers
 
         public IActionResult Index()
         {
+            var totalAssets = _branch.TotalAssets();
             var branch = _branch.GetAll();
             var List = branch
                        .Select(result => new BranchDetailModel
@@ -40,7 +41,9 @@ namespace Library.Controllers
                        });
             var model_branch = new BranchIndexModel()
             {
-                Branches = List
+                Branches = List,
+                TotalAssets = totalAssets,
+                TotalPatron = _branch.TotalPatrons()
             };
             return View(model_branch);
         }

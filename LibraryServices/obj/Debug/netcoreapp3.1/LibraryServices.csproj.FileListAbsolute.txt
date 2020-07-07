@@ -42,7 +42,7 @@ E:\KH2-1920\Framework\Project\Library\LibraryServices\bin\Debug\netcoreapp3.1\Li
 E:\KH2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.csprojAssemblyReference.cache
 E:\KH2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.AssemblyInfoInputs.cache
 E:\KH2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.AssemblyInfo.cs
-E:\KH2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.csproj.CoreCompileInputs.cache
 E:\KH2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.csproj.CopyComplete
 E:\KH2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.dll
 E:\KH2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.pdb
+E:\KH2-1920\Framework\Project\Library\LibraryServices\obj\Debug\netcoreapp3.1\LibraryServices.csproj.CoreCompileInputs.cache

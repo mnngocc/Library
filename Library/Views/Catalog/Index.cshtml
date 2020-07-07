@@ -1,4 +1,5 @@
 ﻿@model Library.Models.Catalog.AssetIndexModel
+
 @{
     ViewData["Title"] = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,47 +10,63 @@
         visibility: hidden;
         display: none;
     }
+
+    .search-fa {
+        padding-top: 10px;
+    }
 </style>
 <section class="section bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-md-1">
-                <p>Type:</p>
+            @*<div class="search-fa">
+                    <p>Type:</p>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control" id="selectType" value="">
+                        <option>All</option>
+                        <option>Book</option>
+                        <option>Video</option>
+                    </select>
+                </div>*@
+
+            <div class="search-fa">
+                <p>Search:</p>
             </div>
-            <div class="col-md-2">
-                <select class="form-control" id="selectType" value="">
-                    <option>All</option>
-                    <option>Book</option>
-                    <option>Video</option>
-                </select>
+            <div class="col-md-6">
+                <form asp-controller="Catalog" asp-action="Search" method="post">
+                    <input class="form-control" type="text" name="searchString" placeholder="Type name book, author or director..." />
+                </form>
             </div>
-                       
+
+        </div>
+        <div class="row">
+            <br />
         </div>
         <div class="row list ">
             @foreach (var asset in Model.Assets)
-            {
+                {
 
-                <div class="col-md-6 col-lg-4 @asset.Type  item All">
-                    <div class="media block-6 d-block">
-                        <div class="media-body ">
-                            <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@asset.Id">
-                                <img src="@asset.ImageURL" class="imageCell" style="width: 200px; height:300px" />
-                            </a>
-                            <h3 class="heading">@asset.Title</h3>
-                            <p><strong>Author/Director: </strong>@asset.AuthorOrDirector</p>
-                            <p><strong>Type: </strong>@asset.Type</p>
-                            <p><strong>Last Location: </strong>@asset.CurrentLocation</p>
+                    <div class="col-md-6 col-lg-4 @asset.Type  item All">
+                        <div class="media block-6 d-block">
+                            <div class="media-body ">
+                                <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@asset.Id">
+                                    <img src="@asset.ImageURL" class="imageCell" style="width: 200px; height:300px" />
+                                </a>
+                                <h3 class="heading">@asset.Title</h3>
+                                <p><strong>Author/Director: </strong>@asset.AuthorOrDirector</p>
+                                <p><strong>Type: </strong>@asset.Type</p>
+                                <p><strong>Last Location: </strong>@asset.CurrentLocation</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
         </div>
     </div>
 
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $('#selectType').on('change', function () {      
+    $('#selectType').on('change', function () {
         var type = $('#selectType').val();
         console.log(type);
         $('.list .item').each(function () {

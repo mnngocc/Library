@@ -5,5 +5,6 @@ namespace Library.Models.Branch
     public class BranchIndexModel
     {
         public IEnumerable<BranchDetailModel> Branches { get; set; }
+        public int TotalAssets { get; set; }
     }
 }

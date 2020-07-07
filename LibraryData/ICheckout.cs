@@ -17,23 +17,23 @@ namespace LibraryData
         IEnumerable<Hold> GetCurrentHold(int id);
         string GetCurrentHoldPatronPhone(int id);
         void PlaceHold(int assetId, int libraryCardId);
-        public void CheckoutToEarliestHold(int id);
+        void CheckoutToEarliestHold(int id);
         Checkout GetLatestCheckout(int assetId);
         string GetCurrentHoldPatronName(int id);
-        public string GetCurrentHoldPatron(int id);
-        public string GetCurrentPatron(int id);
+        string GetCurrentHoldPatron(int id);
+        string GetCurrentPatron(int id);
         string GetCurrentHoldPlaced(int id);
         int NumCheckout();
         string TopAssetName();
         string TopAssetImg();
        // List<Object> TopPatron();
-        public Patron TopPatron();
+        Patron TopPatron();
         LibraryBranch TopBranch();
         bool CheckHoldExist(int assetId, int libCard);
         int NumBranch();
         int TopAsset();
         void MarkLost(int id);
         void MarkFound(int id);
-        public bool IsCheckedOut(int id);
+        bool IsCheckedOut(int id);
     }
 }

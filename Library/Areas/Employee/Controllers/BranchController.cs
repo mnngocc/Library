@@ -26,9 +26,11 @@ namespace Library.Areas.Employee.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            else if (HttpContext.Session.GetInt32("role_id") == 3)
+                return RedirectToAction("Login", "Home");
             else
             {
-                            var branchModels = _branchService.GetAll()
+                 var branchModels = _branchService.GetAll()
                 .Select(br => new BranchDetailModel
                 {
                     Id = br.Id,

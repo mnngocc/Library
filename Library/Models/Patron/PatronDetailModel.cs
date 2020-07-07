@@ -15,6 +15,7 @@ namespace Library.Models.Patron
         public string Telephone { get; set; }
         //public string TelephoneNumber { get; set; }
         public string HomeLibrary { get; set; }
+        public int HomeLibraryBranchId { get; set; }
         public decimal? OverdueFees { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }

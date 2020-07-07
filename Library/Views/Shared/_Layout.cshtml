@@ -49,7 +49,6 @@
                         <li class="nav-item dropdown">
                             @if (@Context.Session.GetString("username") == null)
                             {<a class="nav-link" id="dropdown04" asp-controller="Patron" asp-action="Login" >LOGIN</a>
-
                             }
                             else
                             {
@@ -57,9 +56,9 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
 
                                     <a class="dropdown-item" asp-controller="Patron" asp-action="Profile" asp-route-id='@Context.Session.GetInt32("id")'>Profile</a>
-                                   
-                                    <a class="dropdown-item"  asp-controller="Patron" asp-action="EditInfo" asp-route-id='@Context.Session.GetInt32("id")'>Account setting</a>
+                                    <a class="dropdown-item" asp-controller="Patron" asp-action="EditInfo" asp-route-id='@Context.Session.GetInt32("id")'>Account setting</a>
                                     <a class="dropdown-item" asp-controller="Patron" asp-action="Logout">Log out</a>
+                                    
                                 </div>
                             }
 

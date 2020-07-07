@@ -32,7 +32,7 @@ namespace LibraryServices
         {
             return _context.LibraryAssets
                                     .Include(asset => asset.Status)
-                                    .Include(asset => asset.Location);
+                                    .Include(asset => asset.Location).OrderBy(p => p.Id);
         }
 
         public string GetAuthorOrDirector(int id)
@@ -146,6 +146,14 @@ namespace LibraryServices
                .Include(a => a.Status)
                .Include(a => a.Location)
                .FirstOrDefault(a => a.Id == id);
+        }
+
+        public IEnumerable<LibraryAsset> GetAllWith(string searchString)
+        {
+            return _context.LibraryAssets
+                                    .Include(asset => asset.Status)
+                                    .Include(asset => asset.Location)
+                                    .Where(p => p.Title.Contains(searchString));
         }
 
         //Book or Video?

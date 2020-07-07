@@ -22,7 +22,5 @@ namespace Library.Data.Models
         public int NumberOfCopies { get; set; }
         //public string Discriminator { get; set; }
         public virtual LibraryBranch Location { get; set; }
-
-        
     }
 } 

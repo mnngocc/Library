@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Library.Areas.Admin.Models.Branches;
 using Library.Data.Models;
 using Library.Models.CheckoutModels;
 using Library.Models.Patron;
@@ -9,6 +10,7 @@ using LibraryData;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json.Linq;
 
 namespace Library.Controllers
@@ -16,11 +18,12 @@ namespace Library.Controllers
     public class PatronController : Controller
     {
         private readonly IPatron _patronService;
-        
+        private readonly ILibraryBranchService _branch;
 
-        public PatronController(IPatron patronService)
+        public PatronController(IPatron patronService, ILibraryBranchService branch)
         {
             _patronService = patronService;
+            _branch = branch;
           
         }
 
@@ -41,17 +44,17 @@ namespace Library.Controllers
           
             if (result)
             {
-               
                 HttpContext.Session.SetString("username", patron.Username);
                 HttpContext.Session.SetInt32("id", patron_id.Id);
                 HttpContext.Session.SetInt32("LibraryCard", patron_id.LibraryCard.Id);
+                HttpContext.Session.SetInt32("role_id", patron_id.RoleID);
 
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 ViewBag.error = "Invalid Account";
-                return View( "Login");
+                return View("Login");
             }                
             
         }
@@ -84,6 +87,17 @@ namespace Library.Controllers
         }
         public IActionResult EditInfo(int id)
         {
+            var list = _branch.GetAll();
+            IEnumerable<BranchDetailModel> ResultBranch = list.
+                            Select(result => new BranchDetailModel
+                            {
+                                Id = result.Id,
+                                Name = result.Name,
+                            });
+            List<BranchDetailModel> listBranch = ResultBranch.ToList();
+            SelectList branchList = new SelectList(listBranch, "Id", "Name");
+            ViewBag.branchList = branchList;         
+
             var patron = _patronService.Get(id);
             var model = new PatronDetailModel
             {
@@ -115,7 +129,9 @@ namespace Library.Controllers
                 data.LastName = patron.LastName;
                 data.TelephoneNumber = patron.Telephone;
                 data.Email = patron.Email;
+                data.Address = patron.Address;
                 data.DateOfBirth = patron.DateOfBirth;
+                data.HomeLibraryBranchId = patron.HomeLibraryBranchId;
                 if (patron.Password != null)
                 {
                     data.Password = patron.Password;

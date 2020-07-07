@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Library.Models.Catalog;
 using Library.Models.CheckoutModels;
 using LibraryData;
+using PagedList;
+using PagedList.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,7 +35,7 @@ namespace Library.Controllers
                             Title = result.Title,
                             Type = _assets.GetType(result.Id),
                             CurrentLocation = _assets.GetCurrentLocation(result.Id)?.Name
-                            
+
                         });
             var model = new AssetIndexModel()
             {
@@ -90,9 +92,8 @@ namespace Library.Controllers
         public IActionResult Hold(int id) //Giu sach
         {
             var asset = _assets.Get(id);
-            string msg = "";
             //HttpContext.Session.SetInt32("LibraryCard", patron_id.LibraryCard.Id);
-            msg += HttpContext.Session.GetInt32("LibraryCard");
+           // msg += HttpContext.Session.GetInt32("LibraryCard");
             //msg += HttpContext.Session.GetString("username");
             var libCard = HttpContext.Session.GetInt32("LibraryCard");
             var model = new CheckoutModel
@@ -115,5 +116,28 @@ namespace Library.Controllers
             _checkouts.PlaceHold(assetId, libraryCardId);
             return RedirectToAction("Detail", new { id = assetId });
         }
+
+        [HttpPost]
+        public IActionResult Search(string searchString)
+        {
+            var assetModels = _assets.GetAllWith(searchString);
+            var ListingResult = assetModels
+                        .Select(result => new AssetIndexListingModel
+                        {
+                            Id = result.Id,
+                            ImageURL = result.ImageUrl,
+                            AuthorOrDirector = _assets.GetAuthorOrDirector(result.Id),
+                            DeweyCallNumber = _assets.GetDeweyIndex(result.Id),
+                            Title = result.Title,
+                            Type = _assets.GetType(result.Id),
+                            CurrentLocation = _assets.GetCurrentLocation(result.Id)?.Name
+
+                        });
+            var model = new AssetIndexModel()
+            {
+                Assets = ListingResult
+            };
+            return View("Index", model);
+        }
     }
-}
+}   

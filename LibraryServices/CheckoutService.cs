@@ -36,7 +36,6 @@ namespace LibraryServices
 
             CheckoutItem(assetId, card.Id);
         }
-
         public void CheckInItem(int id)
         {
             var now = DateTime.Now;
@@ -64,6 +63,7 @@ namespace LibraryServices
             {
                 _context.Update(history);
                 history.CheckedIn = now;
+                history.LibraryCard.Fees = 0;
             }
 
             // look for current holds
@@ -83,6 +83,7 @@ namespace LibraryServices
 
             // otherwise, set item status to available
             item.Status = _context.Statuses.FirstOrDefault(a => a.Name == "Available");
+            
             _context.SaveChanges();
 
         }

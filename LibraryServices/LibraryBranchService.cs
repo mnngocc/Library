@@ -136,6 +136,17 @@ namespace LibraryServices
         {
             return _context.LibraryBranches.ToList();
         }
+
+        public int TotalAssets()
+        {
+            return _context.LibraryAssets.Count();
+        }
+
+        public int TotalPatrons()
+        {
+            //throw new NotImplementedException();
+            return _context.Patrons.Count();
+        }
     }
 }
 

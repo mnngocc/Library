@@ -19,5 +19,6 @@ namespace Library.Models.Branch
         public string ImageUrl { get; set; }
         public IEnumerable<string> HoursOpen { get; set; }
         public string AssetsTitle { get; set; }
+        public int TotalAssets { get; set; }
     }
 }
